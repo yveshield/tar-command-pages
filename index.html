@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -10,45 +10,35 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            clifford: '#da373d',
-          }
-        }
-      }
-    }
-
-    var add_verb = function (cmd) {
-      var verb = document.getElementById("verbose-chk").checked;
+    let add_verb = function (cmd) {
+      let verb = document.getElementById("verbose-chk").checked;
       if (verb) {
         cmd.u += 'v';
         cmd.g += ' --verbose';
       }
 
-      var verb2 = document.getElementById("verbose2-chk").checked;
+      let verb2 = document.getElementById("verbose2-chk").checked;
       if (verb2) {
         cmd.u += 'v';
         cmd.g += ' --verbose';
       }
     };
 
-    var add_S = function (cmd) {
-      var sparse = document.getElementById("sparse-chk").checked;
+    let add_S = function (cmd) {
+      let sparse = document.getElementById("sparse-chk").checked;
       if (sparse) {
         cmd.u += 'S';
         cmd.g += ' --sparse';
       }
     }
 
-    var arfv = function () {
-      var arf = document.querySelector('input[name="arf"]:checked').value;
-      var a = '';
-      var b = '';
-      var c = '';
+    let arfv = function () {
+      let arf = document.querySelector('input[name="arf"]:checked').value;
+      let a = '';
+      let b = '';
+      let c = '';
       switch (arf) {
         case '122':
           a = 'z';
@@ -94,14 +84,14 @@
       return [a, b, c]
     };
 
-    var add_arf = function (cmd) {
-      var v = arfv();
-      var a = v[0];
-      var b = v[1];
-      var c = v[2];
+    let add_arf = function (cmd) {
+      let v = arfv();
+      let a = v[0];
+      let b = v[1];
+      let c = v[2];
 
-      if (a != '') {
-        if (a.length == 1) {
+      if (a !== '') {
+        if (a.length === 1) {
           cmd.u += a;
           cmd.g += ' --' + b;
         } else {
@@ -112,13 +102,13 @@
       return c
     };
 
-    var set_cmd = function (cmd) {
-      document.getElementsByName('taru')[0].innerText = cmd.u;
-      document.getElementsByName('targ')[0].innerText = cmd.g;
+    let set_cmd = function (cmd) {
+      document.getElementById('taru').innerText = cmd.u;
+      document.getElementById('targ').innerText = cmd.g;
     };
 
-    var par_c = function () {
-      var cmd = { u: 'tar ', g: 'tar ' };
+    let par_c = function () {
+      let cmd = { u: 'tar ', g: 'tar ' };
 
       cmd.u += '-c';
       cmd.g += '--create';
@@ -127,7 +117,7 @@
 
       add_S(cmd);
 
-      var c = add_arf(cmd);
+      let c = add_arf(cmd);
 
       cmd.u += 'f';
       cmd.g += ' --file';
@@ -141,8 +131,8 @@
       set_cmd(cmd)
     };
 
-    var par_r = function () {
-      var cmd = { u: 'tar ', g: 'tar ' };
+    let par_r = function () {
+      let cmd = { u: 'tar ', g: 'tar ' };
 
       cmd.u += '-r';
       cmd.g += '--append';
@@ -161,8 +151,8 @@
       set_cmd(cmd)
     };
 
-    var par_u = function () {
-      var cmd = { u: 'tar ', g: 'tar ' };
+    let par_u = function () {
+      let cmd = { u: 'tar ', g: 'tar ' };
 
       cmd.u += '-u';
       cmd.g += '--update';
@@ -181,8 +171,8 @@
       set_cmd(cmd)
     };
 
-    var par_A = function () {
-      var cmd = { u: 'tar ', g: 'tar ' };
+    let par_A = function () {
+      let cmd = { u: 'tar ', g: 'tar ' };
 
       cmd.u += '-A';
       cmd.g += '--concatenate';
@@ -201,8 +191,8 @@
       set_cmd(cmd)
     };
 
-    var par_d = function () {
-      var cmd = { u: 'tar ', g: 'tar ' };
+    let par_d = function () {
+      let cmd = { u: 'tar ', g: 'tar ' };
 
       cmd.u += '-d';
       cmd.g += '--diff';
@@ -221,15 +211,15 @@
       set_cmd(cmd)
     };
 
-    var par_t = function () {
-      var cmd = { u: 'tar ', g: 'tar ' };
+    let par_t = function () {
+      let cmd = { u: 'tar ', g: 'tar ' };
 
       cmd.u += '-t';
       cmd.g += '--list';
 
       add_verb(cmd);
 
-      var c = add_arf(cmd);
+      let c = add_arf(cmd);
 
       cmd.u += 'f';
       cmd.g += ' --file';
@@ -243,8 +233,8 @@
       set_cmd(cmd)
     };
 
-    var par_del = function () {
-      var cmd = { u: 'tar ', g: 'tar ' };
+    let par_del = function () {
+      let cmd = { u: 'tar ', g: 'tar ' };
 
       cmd.u += '--delete -';
       cmd.g += '--delete';
@@ -263,8 +253,8 @@
       set_cmd(cmd)
     };
 
-    var par_tl = function () {
-      var cmd = { u: 'tar ', g: 'tar ' };
+    let par_tl = function () {
+      let cmd = { u: 'tar ', g: 'tar ' };
 
       cmd.u += '--test-label -';
       cmd.g += '--test-label';
@@ -283,15 +273,15 @@
       set_cmd(cmd)
     };
 
-    var par_x = function () {
-      var cmd = { u: 'tar ', g: 'tar ' };
+    let par_x = function () {
+      let cmd = { u: 'tar ', g: 'tar ' };
 
       cmd.u += '-x';
       cmd.g += '--extract';
 
       add_verb(cmd);
 
-      var c = add_arf(cmd);
+      let c = add_arf(cmd);
 
       cmd.u += 'f';
       cmd.g += ' --file';
@@ -305,10 +295,10 @@
       set_cmd(cmd)
     };
 
-    var par = function () {
-      var sfg = document.querySelector('input[name="sfg"]:checked').value;
-      var arfw = document.getElementById("arfw");
-      var spaw = document.getElementById('spaw');
+    let par = function () {
+      let sfg = document.querySelector('input[name="sfg"]:checked').value;
+      let arfw = document.getElementById("arfw");
+      let spaw = document.getElementById('spaw');
       spaw.style.display = 'none';
       switch (sfg) {
         case '99':
@@ -351,24 +341,11 @@
       }
     };
 
-    var callback = function () {
-      var rad = document.getElementsByName('sfg');
-      var prev = null;
-      for (var i = 0; i < rad.length; i++) {
-        rad[i].addEventListener('change', function (e) {
-          if (this !== prev) {
-            prev = this;
-          }
-          par()
-          // document.getElementsByName('targ')[0].innerText = this.value;
-          // console.log(this.value)
-        }, true);
-      }
-
-      var rad = document.getElementsByName('arf');
-      var prev = null;
-      for (var i = 0; i < rad.length; i++) {
-        rad[i].addEventListener('change', function (e) {
+    let callback = function () {
+      let rad = document.getElementsByName('sfg');
+      let prev = null;
+      for (let i = 0; i < rad.length; i++) {
+        rad[i].addEventListener('change', function () {
           if (this !== prev) {
             prev = this;
           }
@@ -376,18 +353,29 @@
         }, true);
       }
 
-      document.getElementById("verbose-chk").addEventListener('change', function (e) {
-        var verb = document.getElementById("verbose-chk").checked;
+      rad = document.getElementsByName('arf');
+      prev = null;
+      for (let i = 0; i < rad.length; i++) {
+        rad[i].addEventListener('change', function () {
+          if (this !== prev) {
+            prev = this;
+          }
+          par()
+        }, true);
+      }
+
+      document.getElementById("verbose-chk").addEventListener('change', function () {
+        let verb = document.getElementById("verbose-chk").checked;
         if (!verb) {
           document.getElementById("verbose2-chk").checked = false;
         }
         par()
       }, true);
 
-      document.getElementById("verbose2-chk").addEventListener('change', function (e) {
-        var verb2 = document.getElementById("verbose2-chk").checked;
+      document.getElementById("verbose2-chk").addEventListener('change', function () {
+        let verb2 = document.getElementById("verbose2-chk").checked;
         if (verb2) {
-          var verb = document.getElementById("verbose-chk").checked;
+          let verb = document.getElementById("verbose-chk").checked;
           if (!verb) {
             document.getElementById("verbose-chk").checked = true;
           }
@@ -395,7 +383,7 @@
         par()
       }, true);
 
-      document.getElementById("sparse-chk").addEventListener('change', function (e) {
+      document.getElementById("sparse-chk").addEventListener('change', function () {
         par()
       }, true);
 
@@ -410,13 +398,6 @@
       document.addEventListener("DOMContentLoaded", callback);
     }
   </script>
-  <style type="text/tailwindcss">
-    @layer utilities {
-      .content-auto {
-        content-visibility: auto;
-      }
-    }
-    </style>
 </head>
 
 <body class="bg-slate-100">
@@ -432,28 +413,28 @@
       <div class="main flex flex-wrap m-4 select-none">
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="sfg" value="99" checked />
-          <div class="title px-2">Create</div>
+          <span class="title px-2">Create</span>
         </label>
 
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="sfg" value="114" />
-          <div class="title px-2">Append</div>
+          <span class="title px-2">Append</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="sfg" value="117" />
-          <div class="title px-2">Update</div>
+          <span class="title px-2">Update</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="sfg" value="65" />
-          <div class="title px-2">Catenate</div>
+          <span class="title px-2">Catenate</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="sfg" value="100" />
-          <div class="title px-2">Diff</div>
+          <span class="title px-2">Diff</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="sfg" value="116" />
-          <div class="title px-2">List</div>
+          <span class="title px-2">List</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="sfg" value="mod_test_label" />
@@ -461,11 +442,11 @@
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="sfg" value="127" />
-          <div class="title px-2">Delete</div>
+          <span class="title px-2">Delete</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="sfg" value="120" />
-          <div class="title px-2">Extract</div>
+          <span class="title px-2">Extract</span>
         </label>
       </div>
     </div>
@@ -473,39 +454,39 @@
       <div class="main flex flex-wrap m-4 select-none">
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="arf" value="none" checked />
-          <div class="title px-2">none</div>
+          <span class="title px-2">none</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="arf" value="122" />
-          <div class="title px-2">gzip</div>
+          <span class="title px-2">gzip</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="arf" value="104" />
-          <div class="title px-2">bzip2</div>
+          <span class="title px-2">bzip2</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="arf" value="74" />
-          <div class="title px-2">xz</div>
+          <span class="title px-2">xz</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="arf" value="lzip" />
-          <div class="title px-2">lzip</div>
+          <span class="title px-2">lzip</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="arf" value="lzma" />
-          <div class="title px-2">lzma</div>
+          <span class="title px-2">lzma</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="arf" value="lzop" />
-          <div class="title px-2">lzop</div>
+          <span class="title px-2">lzop</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="arf" value="zstd" />
-          <div class="title px-2">zstd</div>
+          <span class="title px-2">zstd</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="arf" value="90" />
-          <div class="title px-2">compress</div>
+          <span class="title px-2">compress</span>
         </label>
       </div>
     </div>
@@ -559,15 +540,15 @@
                 (1) Execute
               </th>
               <td class="py-4 px-6">
-                <input checked id="red-checkbox" type="checkbox" value=""
+                <input checked type="checkbox" value=""
                   class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               </td>
               <td class="py-4 px-6">
-                <input id="red-checkbox" type="checkbox" value=""
+                <input type="checkbox" value=""
                   class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               </td>
               <td class="py-4 px-6">
-                <input id="red-checkbox" type="checkbox" value=""
+                <input type="checkbox" value=""
                   class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               </td>
             </tr>
@@ -576,15 +557,15 @@
                 (2) Write
               </th>
               <td class="py-4 px-6">
-                <input checked id="yellow-checkbox" type="checkbox" value=""
+                <input checked type="checkbox" value=""
                   class="w-4 h-4 text-yellow-400 bg-gray-100 rounded border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               </td>
               <td class="py-4 px-6">
-                <input checked id="yellow-checkbox" type="checkbox" value=""
+                <input checked type="checkbox" value=""
                   class="w-4 h-4 text-yellow-400 bg-gray-100 rounded border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               </td>
               <td class="py-4 px-6">
-                <input id="yellow-checkbox" type="checkbox" value=""
+                <input type="checkbox" value=""
                   class="w-4 h-4 text-yellow-400 bg-gray-100 rounded border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               </td>
             </tr>
@@ -593,15 +574,15 @@
                 (4) Read
               </th>
               <td class="py-4 px-6">
-                <input checked id="green-checkbox" type="checkbox" value=""
+                <input checked type="checkbox" value=""
                   class="w-4 h-4 text-green-600 bg-gray-100 rounded border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               </td>
               <td class="py-4 px-6">
-                <input checked id="green-checkbox" type="checkbox" value=""
+                <input checked type="checkbox" value=""
                   class="w-4 h-4 text-green-600 bg-gray-100 rounded border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               </td>
               <td class="py-4 px-6">
-                <input checked id="green-checkbox" type="checkbox" value=""
+                <input checked type="checkbox" value=""
                   class="w-4 h-4 text-green-600 bg-gray-100 rounded border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
               </td>
             </tr>
@@ -611,12 +592,12 @@
     </div>
     <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 bg-slate-50 font-extralight">
       <h3 class="text-slate-400">UNIX-Style:</h3>
-      <div class="pt-4 pb-4 text-2xl text-orange-300">$ <span name="taru" class="text-indigo-400 font-mono">tar
+      <div class="pt-4 pb-4 text-2xl text-orange-300">$ <span id="taru" class="text-indigo-400 font-mono">tar
           -cvf etc.tar
           /etc</span>
       </div>
       <h3 class="text-slate-400">GNU-Style:</h3>
-      <div class="pt-4 pb-4 text-2xl text-orange-300">$ <span name="targ" class="text-indigo-400 font-mono">tar
+      <div class="pt-4 pb-4 text-2xl text-orange-300">$ <span id="targ" class="text-indigo-400 font-mono">tar
           --create --verbose
           --file
           etc.tar
