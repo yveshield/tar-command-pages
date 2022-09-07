@@ -389,7 +389,7 @@
             }, true);
 
             const reg = /^\/tar[\w-]+\.html$/ig;
-            const res = window.location.pathname;
+            const res = window.location.pathname.toLowerCase();
             if (reg.test(res)) {
                 const opt = res.substring(5, res.length - 5).split('-');
                 if (opt.length == 0) {
@@ -465,9 +465,11 @@
                 }
                 if (val != '') {
                     document.tcform.sfg.value = val;
+                    if (res.includes('-vv')) {
+                        document.getElementById("verbose2-chk").checked = true;
+                    }
                     par()
                 }
-
             }
         };
 
