@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tar command | tarcommand.com</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="/css/tailwind.css" rel="stylesheet">
+    <script>
+
+        let add_verb = function (cmd) {
+            let verb = document.getElementById("verbose-chk").checked;
+            if (verb) {
+                cmd.u += 'v';
+                cmd.g += ' --verbose';
+            }
+
+            let verb2 = document.getElementById("verbose2-chk").checked;
+            if (verb2) {
+                cmd.u += 'v';
+                cmd.g += ' --verbose';
+            }
+        };
+
+        let add_S = function (cmd) {
+            let sparse = document.getElementById("sparse-chk").checked;
+            if (sparse) {
+                cmd.u += 'S';
+                cmd.g += ' --sparse';
+            }
+        }
+
+        let arfv = function () {
+            let arf = document.querySelector('input[name="arf"]:checked').value;
+            let a = '';
+            let b = '';
+            let c = '';
+            switch (arf) {
+                case '122':
+                    a = 'z';
+                    b = 'gzip';
+                    c = '.gz';
+                    break;
+                case '104':
+                    a = 'j';
+                    b = 'bzip2';
+                    c = '.bz2';
+                    break;
+                case '74':
+                    a = 'J';
+                    b = 'xz';
+                    c = '.xz';
+                    break;
+                case 'lzip':
+                    a = arf;
+                    b = a;
+                    c = '.lz';
+                    break;
+                case 'lzma':
+                    a = arf;
+                    b = a;
+                    c = '.lzma';
+                    break;
+                case 'lzop':
+                    a = arf;
+                    b = a;
+                    c = '.lzo';
+                    break;
+                case 'zstd':
+                    a = arf;
+                    b = a;
+                    c = '.zst';
+                    break;
+                case '90':
+                    a = 'Z';
+                    b = 'compress';
+                    c = '.Z';
+                    break;
+            }
+            return [a, b, c]
+        };
+
+        let add_arf = function (cmd) {
+            let v = arfv();
+            let a = v[0];
+            let b = v[1];
+            let c = v[2];
+
+            if (a !== '') {
+                if (a.length === 1) {
+                    cmd.u += a;
+                    cmd.g += ' --' + b;
+                } else {
+                    cmd.u += ' --' + a + ' -';
+                    cmd.g += ' --' + b;
+                }
+            }
+            return c
+        };
+
+        let set_cmd = function (cmd) {
+            document.getElementById('taru').innerText = cmd.u;
+            document.getElementById('targ').innerText = cmd.g;
+        };
+
+        let par_c = function () {
+            let cmd = { u: 'tar ', g: 'tar ' };
+
+            cmd.u += '-c';
+            cmd.g += '--create';
+
+            add_verb(cmd);
+
+            add_S(cmd);
+
+            let c = add_arf(cmd);
+
+            cmd.u += 'f';
+            cmd.g += ' --file';
+
+            cmd.u += ' etc.tar' + c;
+            cmd.g += ' etc.tar' + c;
+
+            cmd.u += ' /etc';
+            cmd.g += ' /etc';
+
+            set_cmd(cmd)
+        };
+
+        let par_r = function () {
+            let cmd = { u: 'tar ', g: 'tar ' };
+
+            cmd.u += '-r';
+            cmd.g += '--append';
+
+            add_verb(cmd);
+
+            cmd.u += 'f';
+            cmd.g += ' --file';
+
+            cmd.u += ' collection.tar';
+            cmd.g += ' collection.tar';
+
+            cmd.u += ' rock';
+            cmd.g += ' rock';
+
+            set_cmd(cmd)
+        };
+
+        let par_u = function () {
+            let cmd = { u: 'tar ', g: 'tar ' };
+
+            cmd.u += '-u';
+            cmd.g += '--update';
+
+            add_verb(cmd);
+
+            cmd.u += 'f';
+            cmd.g += ' --file';
+
+            cmd.u += ' collection.tar';
+            cmd.g += ' collection.tar';
+
+            cmd.u += ' rock';
+            cmd.g += ' rock';
+
+            set_cmd(cmd)
+        };
+
+        let par_A = function () {
+            let cmd = { u: 'tar ', g: 'tar ' };
+
+            cmd.u += '-A';
+            cmd.g += '--concatenate';
+
+            add_verb(cmd);
+
+            cmd.u += 'f';
+            cmd.g += ' --file';
+
+            cmd.u += ' bluesrock.tar';
+            cmd.g += ' bluesrock.tar';
+
+            cmd.u += ' folkjazz.tar';
+            cmd.g += ' folkjazz.tar';
+
+            set_cmd(cmd)
+        };
+
+        let par_d = function () {
+            let cmd = { u: 'tar ', g: 'tar ' };
+
+            cmd.u += '-d';
+            cmd.g += '--diff';
+
+            add_verb(cmd);
+
+            cmd.u += 'f';
+            cmd.g += ' --file';
+
+            cmd.u += ' collection.tar';
+            cmd.g += ' collection.tar';
+
+            cmd.u += ' rock';
+            cmd.g += ' rock';
+
+            set_cmd(cmd)
+        };
+
+        let par_t = function () {
+            let cmd = { u: 'tar ', g: 'tar ' };
+
+            cmd.u += '-t';
+            cmd.g += '--list';
+
+            add_verb(cmd);
+
+            let c = add_arf(cmd);
+
+            cmd.u += 'f';
+            cmd.g += ' --file';
+
+            cmd.u += ' collection.tar' + c;
+            cmd.g += ' collection.tar' + c;
+
+            cmd.u += ' rock';
+            cmd.g += ' rock';
+
+            set_cmd(cmd)
+        };
+
+        let par_del = function () {
+            let cmd = { u: 'tar ', g: 'tar ' };
+
+            cmd.u += '--delete -';
+            cmd.g += '--delete';
+
+            add_verb(cmd);
+
+            cmd.u += 'f';
+            cmd.g += ' --file';
+
+            cmd.u += ' collection.tar';
+            cmd.g += ' collection.tar';
+
+            cmd.u += ' rock';
+            cmd.g += ' rock';
+
+            set_cmd(cmd)
+        };
+
+        let par_tl = function () {
+            let cmd = { u: 'tar ', g: 'tar ' };
+
+            cmd.u += '--test-label -';
+            cmd.g += '--test-label';
+
+            add_verb(cmd);
+
+            cmd.u += 'f';
+            cmd.g += ' --file';
+
+            cmd.u += ' collection.tar';
+            cmd.g += ' collection.tar';
+
+            cmd.u += ' rock';
+            cmd.g += ' rock';
+
+            set_cmd(cmd)
+        };
+
+        let par_x = function () {
+            let cmd = { u: 'tar ', g: 'tar ' };
+
+            cmd.u += '-x';
+            cmd.g += '--extract';
+
+            add_verb(cmd);
+
+            let c = add_arf(cmd);
+
+            cmd.u += 'f';
+            cmd.g += ' --file';
+
+            cmd.u += ' collection.tar' + c;
+            cmd.g += ' collection.tar' + c;
+
+            cmd.u += ' rock';
+            cmd.g += ' rock';
+
+            set_cmd(cmd)
+        };
+
+        let par = function () {
+            let sfg = document.querySelector('input[name="sfg"]:checked').value;
+            let arfw = document.getElementById("arfw");
+            let spaw = document.getElementById('spaw');
+            spaw.style.display = 'none';
+            switch (sfg) {
+                case '99':
+                    arfw.style.display = '';
+                    spaw.style.display = '';
+                    par_c();
+                    break;
+                case '114':
+                    arfw.style.display = 'none';
+                    par_r();
+                    break;
+                case '117':
+                    arfw.style.display = 'none';
+                    par_u();
+                    break;
+                case '65':
+                    arfw.style.display = 'none';
+                    par_A();
+                    break;
+                case '100':
+                    arfw.style.display = 'none';
+                    par_d();
+                    break;
+                case '116':
+                    arfw.style.display = '';
+                    par_t();
+                    break;
+                case 'test_label':
+                    arfw.style.display = 'none';
+                    par_tl();
+                    break;
+                case '127':
+                    arfw.style.display = 'none';
+                    par_del();
+                    break;
+                case '120':
+                    arfw.style.display = '';
+                    par_x();
+                    break;
+            }
+        };
+
+        let callback = function () {
+            let rad = document.getElementsByName('sfg');
+            let prev = null;
+            for (let i = 0; i < rad.length; i++) {
+                rad[i].addEventListener('change', function () {
+                    if (this !== prev) {
+                        prev = this;
+                    }
+                    par()
+                }, true);
+            }
+
+            rad = document.getElementsByName('arf');
+            prev = null;
+            for (let i = 0; i < rad.length; i++) {
+                rad[i].addEventListener('change', function () {
+                    if (this !== prev) {
+                        prev = this;
+                    }
+                    par()
+                }, true);
+            }
+
+            document.getElementById("verbose-chk").addEventListener('change', function () {
+                let verb = document.getElementById("verbose-chk").checked;
+                if (!verb) {
+                    document.getElementById("verbose2-chk").checked = false;
+                }
+                par()
+            }, true);
+
+            document.getElementById("verbose2-chk").addEventListener('change', function () {
+                let verb2 = document.getElementById("verbose2-chk").checked;
+                if (verb2) {
+                    let verb = document.getElementById("verbose-chk").checked;
+                    if (!verb) {
+                        document.getElementById("verbose-chk").checked = true;
+                    }
+                }
+                par()
+            }, true);
+
+            document.getElementById("sparse-chk").addEventListener('change', function () {
+                par()
+            }, true);
+
+            const reg = /^\/tar[\w-]+\.html$/ig;
+            // let res = window.location.pathname.match(reg);
+            const res = '/tar-create-bzip2.html';
+            if (reg.test(res)) {
+                const opt = res.substring(5, res.length - 5).split('-');
+                if (opt.length == 0) {
+                    opt = [,];
+                } else if (opt.length == 1) {
+                    opt.push(null);
+                }
+                let set_arf = function (a) {
+                    switch (a) {
+                        case 'gzip':
+                            a = '122';
+                            break;
+                        case 'bzip2':
+                            a = '104';
+                            break;
+                        case 'xz':
+                            a = '74';
+                            break;
+                        case 'lzip':
+                        case 'lzma':
+                        case 'lzop':
+                        case 'zstd':
+                            break;
+                        case 'z':
+                            a = '90';
+                            break;
+                        default:
+                            a = '';
+                    }
+                    if (a != '') {
+                        document.tcform.arf.value = a;
+                    }
+                }
+                let val = '';
+                switch (opt[0]) {
+                    case 'create':
+                        val = '99';
+                        set_arf(opt[1]);
+                        break;
+                    case 'append':
+                        val = '114';
+                        break;
+                    case 'update':
+                        val = '117';
+                        break;
+                    case 'catenate':
+                    case 'concatenate':
+                        val = '65';
+                        break;
+                    case 'diff':
+                    case 'compare':
+                        val = '100';
+                        break;
+                    case 'list':
+                        val = '116';
+                        set_arf(opt[1]);
+                        break;
+                    case 'test':
+                        if (opt[1] == 'label') {
+                            val = 'test_label';
+                        }
+                        break;
+                    case 'delete':
+                        val = '127';
+                        break;
+                    case 'extract':
+                    case 'get':
+                        val = '120';
+                        set_arf(opt[1]);
+                        break;
+                    default:
+                        val = '';
+                }
+                if (val != '') {
+                    document.tcform.sfg.value = val;
+                    par()
+                }
+
+            }
+        };
+
+        if (
+            document.readyState === "complete" ||
+            (document.readyState !== "loading" && !document.documentElement.doScroll)
+        ) {
+            callback();
+        } else {
+            document.addEventListener("DOMContentLoaded", callback);
+        }
+    </script>
+    <meta name="description"
+        content="Quickly generate tar in archives and compressing modes. All formats included (gzip, bzip2, xz, zstd, etc). Ready to copy paste to your terminal in seconds." />
+    <meta name="robots" content="noodp" />
+    <link rel="canonical" href="https://tarcommand.com/" />
+    <meta itemprop="name" content="Tar Generator | Tar Command" />
+    <meta itemprop="description"
+        content="Quickly generate tar in archives and compressing modes. All formats included (gzip, bzip2, xz, zstd, etc). Ready to copy paste to your terminal in seconds." />
+    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+    <meta name="og:title" content="Tar Generator | Tar Command" />
+    <meta name="og:description"
+        content="Quickly generate tar in archives and compressing modes. All formats included (gzip, bzip2, xz, zstd, etc). Ready to copy paste to your terminal in seconds." />
+    <meta name="og:url" content="https://tarcommand.com/" />
+    <meta name="og:site_name" content="Tar Command Generator" />
+    <meta name="og:type" content="website" />
+</head>
+
+<body class="bg-slate-100">
+    <form name="tcform">
+        <div class="container w-5/6 mt-9 mx-auto px-4 pt-2 bg-slate-50">
+            <div class="columns-1 text-slate-200">TC</div>
+            <h1 class="col-auto text-center text-6xl pb-4 text-yellow-500">tar command</h1>
+            <div class="text-slate-400 font-light">tarcommand allows you to quickly generate commands for creating
+                archives,
+                compressing and uncompressing archives, and
+                many other hard-to-remember features and options.</div>
+        </div>
+        <div class="container w-5/6 mt-4 mx-auto px-4 bg-slate-50">
+            <div>
+                <h2 class="hidden">Mode</h2>
+            </div>
+            <div class="main flex flex-wrap m-4 select-none">
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="99" checked />
+                    <span class="title px-2">Create</span>
+                </label>
+
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="114" />
+                    <span class="title px-2">Append</span>
+                </label>
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="117" />
+                    <span class="title px-2">Update</span>
+                </label>
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="65" />
+                    <span class="title px-2">Catenate</span>
+                </label>
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="100" />
+                    <span class="title px-2">Diff</span>
+                </label>
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="116" />
+                    <span class="title px-2">List</span>
+                </label>
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="test_label" />
+                    <span class="title px-2">Test Label</span>
+                </label>
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="127" />
+                    <span class="title px-2">Delete</span>
+                </label>
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="120" />
+                    <span class="title px-2">Extract</span>
+                </label>
+            </div>
+        </div>
+        <div class="container w-5/6 mt-4 mx-auto px-4 bg-slate-50" id="arfw">
+            <div>
+                <h2 class="hidden">archiving formats</h2>
+            </div>
+            <div class="main flex flex-wrap m-4 select-none">
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="arf" value="none" checked />
+                    <span class="title px-2">none</span>
+                </label>
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="arf" value="122" />
+                    <span class="title px-2">gzip</span>
+                </label>
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="arf" value="104" />
+                    <span class="title px-2">bzip2</span>
+                </label>
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="arf" value="74" />
+                    <span class="title px-2">xz</span>
+                </label>
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="arf" value="lzip" />
+                    <span class="title px-2">lzip</span>
+                </label>
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="arf" value="lzma" />
+                    <span class="title px-2">lzma</span>
+                </label>
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="arf" value="lzop" />
+                    <span class="title px-2">lzop</span>
+                </label>
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="arf" value="zstd" />
+                    <span class="title px-2">zstd</span>
+                </label>
+                <label class="flex radio p-2 cursor-pointer">
+                    <input class="my-auto transform scale-125" type="radio" name="arf" value="90" />
+                    <span class="title px-2">compress</span>
+                </label>
+            </div>
+        </div>
+        <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 pb-1 bg-slate-50">
+            <div class="flex items-center mb-4">
+                <input checked id="verbose-chk" type="checkbox" value="1"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="verbose-chk"
+                    class="ml-2 mr-4 text-sm font-medium text-gray-900 dark:text-gray-300">Verbose</label>
+
+                <input id="verbose2-chk" type="checkbox" value="1"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="verbose2-chk" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Extra
+                    Verbose</label>
+            </div>
+        </div>
+        <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 pb-1 bg-slate-50" id="spaw">
+            <div class="flex items-center mb-4">
+                <input id="sparse-chk" type="checkbox" value="1"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="sparse-chk" class="ml-2 mr-4 text-sm font-medium text-gray-900 dark:text-gray-300">Sparse
+                    Files</label>
+            </div>
+        </div>
+        <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 pb-2 bg-slate-50 hidden">
+            <div class="flex items-center mb-4">
+                <input id="permissions-chk" type="checkbox" value="1"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="permissions-chk"
+                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Overriding
+                    permissions</label>
+            </div>
+            <div class="overflow-x-auto relative">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="py-3 px-6">
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                (u) Owner Right
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                (g) Group Right
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                (o) Other Right
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row"
+                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                (1) Execute
+                            </th>
+                            <td class="py-4 px-6">
+                                <input checked type="checkbox" value=""
+                                    class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            </td>
+                            <td class="py-4 px-6">
+                                <input type="checkbox" value=""
+                                    class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            </td>
+                            <td class="py-4 px-6">
+                                <input type="checkbox" value=""
+                                    class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            </td>
+                        </tr>
+                        <tr class="bg-white dark:bg-gray-800">
+                            <th scope="row"
+                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                (2) Write
+                            </th>
+                            <td class="py-4 px-6">
+                                <input checked type="checkbox" value=""
+                                    class="w-4 h-4 text-yellow-400 bg-gray-100 rounded border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            </td>
+                            <td class="py-4 px-6">
+                                <input checked type="checkbox" value=""
+                                    class="w-4 h-4 text-yellow-400 bg-gray-100 rounded border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            </td>
+                            <td class="py-4 px-6">
+                                <input type="checkbox" value=""
+                                    class="w-4 h-4 text-yellow-400 bg-gray-100 rounded border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row"
+                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                (4) Read
+                            </th>
+                            <td class="py-4 px-6">
+                                <input checked type="checkbox" value=""
+                                    class="w-4 h-4 text-green-600 bg-gray-100 rounded border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            </td>
+                            <td class="py-4 px-6">
+                                <input checked type="checkbox" value=""
+                                    class="w-4 h-4 text-green-600 bg-gray-100 rounded border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            </td>
+                            <td class="py-4 px-6">
+                                <input checked type="checkbox" value=""
+                                    class="w-4 h-4 text-green-600 bg-gray-100 rounded border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 bg-slate-50 font-extralight">
+            <h3 class="text-slate-400">UNIX-Style:</h3>
+            <div class="pt-4 pb-4 text-2xl text-orange-300">$ <span id="taru" class="text-indigo-400 font-mono">tar
+                    -cvf etc.tar
+                    /etc</span>
+            </div>
+            <h3 class="text-slate-400">GNU-Style:</h3>
+            <div class="pt-4 pb-4 text-2xl text-orange-300">$ <span id="targ" class="text-indigo-400 font-mono">tar
+                    --create --verbose
+                    --file
+                    etc.tar
+                    /etc</span></div>
+        </div>
+        <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 pb-2 bg-slate-50 text-slate-500 font-extralight">
+            Links: <a href="https://linux-permissions.com/" class="underline">Linux Permissions</a>
+        </div>
+        <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 bg-slate-100 text-slate-400 font-extralight">
+            <a href="https://tarcommand.com/">&copy;2022 TAR Command, tarcommand.com</a>
+        </div>
+    </form>
+</body>
+
+</html>
