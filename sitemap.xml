@@ -1,183 +1,535 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.tarcommand.com/index.html</loc>
+    <loc>https://tarcommand.com/index.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-create.html</loc>
+    <loc>https://tarcommand.com/tar-create.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-append.html</loc>
+    <loc>https://tarcommand.com/tar-append.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-update.html</loc>
+    <loc>https://tarcommand.com/tar-update.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-catenate.html</loc>
+    <loc>https://tarcommand.com/tar-catenate.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-concatenate.html</loc>
+    <loc>https://tarcommand.com/tar-concatenate.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-diff.html</loc>
+    <loc>https://tarcommand.com/tar-diff.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-compare.html</loc>
+    <loc>https://tarcommand.com/tar-compare.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-list.html</loc>
+    <loc>https://tarcommand.com/tar-list.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-test-label.html</loc>
+    <loc>https://tarcommand.com/tar-test-label.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-delete.html</loc>
+    <loc>https://tarcommand.com/tar-delete.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-extract.html</loc>
+    <loc>https://tarcommand.com/tar-extract.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-get.html</loc>
+    <loc>https://tarcommand.com/tar-get.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-create-gzip.html</loc>
+    <loc>https://tarcommand.com/tar-create-gzip.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-create-bzip2.html</loc>
+    <loc>https://tarcommand.com/tar-create-bzip2.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-create-xz.html</loc>
+    <loc>https://tarcommand.com/tar-create-xz.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-create-lzip.html</loc>
+    <loc>https://tarcommand.com/tar-create-lzip.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-create-lzma.html</loc>
+    <loc>https://tarcommand.com/tar-create-lzma.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-create-lzop.html</loc>
+    <loc>https://tarcommand.com/tar-create-lzop.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-create-zstd.html</loc>
+    <loc>https://tarcommand.com/tar-create-zstd.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-create-z.html</loc>
+    <loc>https://tarcommand.com/tar-create-z.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-list-gzip.html</loc>
+    <loc>https://tarcommand.com/tar-list-gzip.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-list-bzip2.html</loc>
+    <loc>https://tarcommand.com/tar-list-bzip2.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-list-xz.html</loc>
+    <loc>https://tarcommand.com/tar-list-xz.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-list-lzip.html</loc>
+    <loc>https://tarcommand.com/tar-list-lzip.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-list-lzma.html</loc>
+    <loc>https://tarcommand.com/tar-list-lzma.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-list-lzop.html</loc>
+    <loc>https://tarcommand.com/tar-list-lzop.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-list-zstd.html</loc>
+    <loc>https://tarcommand.com/tar-list-zstd.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-list-z.html</loc>
+    <loc>https://tarcommand.com/tar-list-z.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-extract-gzip.html</loc>
+    <loc>https://tarcommand.com/tar-extract-gzip.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-extract-bzip2.html</loc>
+    <loc>https://tarcommand.com/tar-extract-bzip2.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-extract-xz.html</loc>
+    <loc>https://tarcommand.com/tar-extract-xz.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-extract-lzip.html</loc>
+    <loc>https://tarcommand.com/tar-extract-lzip.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-extract-lzma.html</loc>
+    <loc>https://tarcommand.com/tar-extract-lzma.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-extract-lzop.html</loc>
+    <loc>https://tarcommand.com/tar-extract-lzop.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-extract-zstd.html</loc>
+    <loc>https://tarcommand.com/tar-extract-zstd.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-extract-z.html</loc>
+    <loc>https://tarcommand.com/tar-extract-z.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-get-gzip.html</loc>
+    <loc>https://tarcommand.com/tar-get-gzip.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-get-bzip2.html</loc>
+    <loc>https://tarcommand.com/tar-get-bzip2.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-get-xz.html</loc>
+    <loc>https://tarcommand.com/tar-get-xz.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-get-lzip.html</loc>
+    <loc>https://tarcommand.com/tar-get-lzip.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-get-lzma.html</loc>
+    <loc>https://tarcommand.com/tar-get-lzma.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-get-lzop.html</loc>
+    <loc>https://tarcommand.com/tar-get-lzop.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-get-zstd.html</loc>
+    <loc>https://tarcommand.com/tar-get-zstd.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
-    <loc>https://www.tarcommand.com/tar-get-z.html</loc>
+    <loc>https://tarcommand.com/tar-get-z.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-append-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-update-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-catenate-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-concatenate-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-diff-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-compare-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-test-label-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-delete-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-gzip-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-bzip2-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-xz-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-lzip-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-lzma-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-lzop-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-zstd-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-z-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-gzip-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-bzip2-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-xz-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-lzip-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-lzma-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-lzop-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-zstd-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-z-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-gzip-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-bzip2-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-xz-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-lzip-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-lzma-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-lzop-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-zstd-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-z-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-gzip-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-bzip2-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-xz-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-lzip-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-lzma-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-lzop-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-zstd-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-z-v.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-append-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-update-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-catenate-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-concatenate-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-diff-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-compare-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-test-label-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-delete-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-gzip-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-bzip2-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-xz-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-lzip-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-lzma-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-lzop-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-zstd-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-z-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-gzip-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-bzip2-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-xz-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-lzip-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-lzma-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-lzop-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-zstd-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-list-z-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-gzip-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-bzip2-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-xz-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-lzip-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-lzma-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-lzop-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-zstd-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-extract-z-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-gzip-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-bzip2-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-xz-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-lzip-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-lzma-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-lzop-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-zstd-vv.html</loc>
+    <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-get-z-vv.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
 </urlset>
