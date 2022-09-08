@@ -389,8 +389,7 @@
             }, true);
 
             const reg = /^\/tar[\w-]+\.html$/ig;
-            const res = window.location.pathname.match(reg);
-            if (reg.test(res)) {
+            if (window.location.pathname.test(res)) {
                 const opt = res.substring(5, res.length - 5).split('-');
                 if (opt.length == 0) {
                     opt = [,];
