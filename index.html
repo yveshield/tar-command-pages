@@ -51,6 +51,11 @@
           b = 'bzip2';
           c = '.bz2';
           break;
+        case 'lbzip2':
+          a = 'use-compress-program=lbzip2';
+          b = a;
+          c = '.bz2';
+          break;
         case '74':
           a = 'J';
           b = 'xz';
@@ -481,6 +486,10 @@
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="arf" value="104" />
           <span class="title px-2">bzip2</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="arf" value="lbzip2" />
+          <span class="title px-2">lbzip2</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="arf" value="74" />
