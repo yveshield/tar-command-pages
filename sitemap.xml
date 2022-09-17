@@ -60,6 +60,10 @@
     <loc>https://tarcommand.com/tar-create-bzip2.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
+    <url>
+    <loc>https://tarcommand.com/tar-create-lbzip2.html</loc>
+    <lastmod>2022-09-17</lastmod>
+  </url>
   <url>
     <loc>https://tarcommand.com/tar-create-xz.html</loc>
     <lastmod>2022-09-08</lastmod>
@@ -91,6 +95,10 @@
   <url>
     <loc>https://tarcommand.com/tar-list-bzip2.html</loc>
     <lastmod>2022-09-08</lastmod>
+  </url>
+    <url>
+    <loc>https://tarcommand.com/tar-list-lbzip2.html</loc>
+    <lastmod>2022-09-17</lastmod>
   </url>
   <url>
     <loc>https://tarcommand.com/tar-list-xz.html</loc>
@@ -124,6 +132,10 @@
     <loc>https://tarcommand.com/tar-extract-bzip2.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
+    <url>
+    <loc>https://tarcommand.com/tar-extract-lbzip2.html</loc>
+    <lastmod>2022-09-17</lastmod>
+  </url>
   <url>
     <loc>https://tarcommand.com/tar-extract-xz.html</loc>
     <lastmod>2022-09-08</lastmod>
@@ -155,6 +167,10 @@
   <url>
     <loc>https://tarcommand.com/tar-get-bzip2.html</loc>
     <lastmod>2022-09-08</lastmod>
+  </url>
+    <url>
+    <loc>https://tarcommand.com/tar-get-lbzip2.html</loc>
+    <lastmod>2022-09-17</lastmod>
   </url>
   <url>
     <loc>https://tarcommand.com/tar-get-xz.html</loc>
@@ -236,6 +252,10 @@
     <loc>https://tarcommand.com/tar-create-bzip2-v.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
+    <url>
+    <loc>https://tarcommand.com/tar-create-lbzip2-v.html</loc>
+    <lastmod>2022-09-17</lastmod>
+  </url>
   <url>
     <loc>https://tarcommand.com/tar-create-xz-v.html</loc>
     <lastmod>2022-09-08</lastmod>
@@ -267,6 +287,10 @@
   <url>
     <loc>https://tarcommand.com/tar-list-bzip2-v.html</loc>
     <lastmod>2022-09-08</lastmod>
+  </url>
+    <url>
+    <loc>https://tarcommand.com/tar-list-lbzip2-v.html</loc>
+    <lastmod>2022-09-17</lastmod>
   </url>
   <url>
     <loc>https://tarcommand.com/tar-list-xz-v.html</loc>
@@ -300,6 +324,10 @@
     <loc>https://tarcommand.com/tar-extract-bzip2-v.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
+    <url>
+    <loc>https://tarcommand.com/tar-extract-lbzip2-v.html</loc>
+    <lastmod>2022-09-17</lastmod>
+  </url>
   <url>
     <loc>https://tarcommand.com/tar-extract-xz-v.html</loc>
     <lastmod>2022-09-08</lastmod>
@@ -331,6 +359,10 @@
   <url>
     <loc>https://tarcommand.com/tar-get-bzip2-v.html</loc>
     <lastmod>2022-09-08</lastmod>
+  </url>
+    <url>
+    <loc>https://tarcommand.com/tar-get-lbzip2-v.html</loc>
+    <lastmod>2022-09-17</lastmod>
   </url>
   <url>
     <loc>https://tarcommand.com/tar-get-xz-v.html</loc>
@@ -412,6 +444,10 @@
     <loc>https://tarcommand.com/tar-create-bzip2-vv.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
+    <url>
+    <loc>https://tarcommand.com/tar-create-lbzip2-vv.html</loc>
+    <lastmod>2022-09-17</lastmod>
+  </url>
   <url>
     <loc>https://tarcommand.com/tar-create-xz-vv.html</loc>
     <lastmod>2022-09-08</lastmod>
@@ -443,6 +479,10 @@
   <url>
     <loc>https://tarcommand.com/tar-list-bzip2-vv.html</loc>
     <lastmod>2022-09-08</lastmod>
+  </url>
+    <url>
+    <loc>https://tarcommand.com/tar-list-lbzip2-vv.html</loc>
+    <lastmod>2022-09-17</lastmod>
   </url>
   <url>
     <loc>https://tarcommand.com/tar-list-xz-vv.html</loc>
@@ -476,6 +516,10 @@
     <loc>https://tarcommand.com/tar-extract-bzip2-vv.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
+    <url>
+    <loc>https://tarcommand.com/tar-extract-lbzip2-vv.html</loc>
+    <lastmod>2022-09-17</lastmod>
+  </url>
   <url>
     <loc>https://tarcommand.com/tar-extract-xz-vv.html</loc>
     <lastmod>2022-09-08</lastmod>
@@ -507,6 +551,10 @@
   <url>
     <loc>https://tarcommand.com/tar-get-bzip2-vv.html</loc>
     <lastmod>2022-09-08</lastmod>
+  </url>
+    <url>
+    <loc>https://tarcommand.com/tar-get-lbzip2-vv.html</loc>
+    <lastmod>2022-09-17</lastmod>
   </url>
   <url>
     <loc>https://tarcommand.com/tar-get-xz-vv.html</loc>
