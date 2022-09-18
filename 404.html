@@ -2,335 +2,330 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tar command generator | tarcommand.com</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link href="/css/tailwind.css" rel="stylesheet">
-    <script src="/js/main.js"></script>
-    <meta name="description"
-        content="Quickly generate tar in archives and compressing modes. All formats included (gzip, bzip2, lbzip2, xz, zstd, etc). Ready to copy paste to your terminal in seconds." />
-    <meta name="robots" content="noodp" />
-    <link rel="canonical" href="https://tarcommand.com/" />
-    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
-    <meta name="og:title" content="Tar Command Generator | Tar Command" />
-    <meta name="og:description"
-        content="Quickly generate tar in archives and compressing modes. All formats included (gzip, bzip2, lbzip2, xz, zstd, etc). Ready to copy paste to your terminal in seconds." />
-    <meta name="og:url" content="https://tarcommand.com/" />
-    <meta name="og:site_name" content="Tar Command Generator" />
-    <meta name="og:type" content="website" />
-    <meta name="og:image" content="https://tarcommand.com/android-chrome-512x512.png" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tar command generator | tarcommand.com</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link href="/css/tailwind.css" rel="stylesheet">
+  <script src="/js/main.js"></script>
+  <meta name="description"
+    content="Quickly generate tar in archives and compressing modes. All formats included (gzip, bzip2, lbzip2, xz, zstd, etc). Ready to copy paste to your terminal in seconds." />
+  <meta name="robots" content="noodp" />
+  <link rel="canonical" href="https://tarcommand.com/" />
+  <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+  <meta name="og:title" content="Tar Command Generator | Tar Command" />
+  <meta name="og:description"
+    content="Quickly generate tar in archives and compressing modes. All formats included (gzip, bzip2, lbzip2, xz, zstd, etc). Ready to copy paste to your terminal in seconds." />
+  <meta name="og:url" content="https://tarcommand.com/" />
+  <meta name="og:site_name" content="Tar Command Generator" />
+  <meta name="og:type" content="website" />
+  <meta name="og:image" content="https://tarcommand.com/android-chrome-512x512.png" />
 </head>
 
 <body class="bg-slate-100">
-    <form name="tcform">
-        <div class="container w-5/6 mt-9 mx-auto px-4 pt-2 bg-slate-50">
-            <div class="columns-1 text-slate-200">TC</div>
-            <h1 class="col-auto text-center text-6xl pb-4 text-yellow-500">tar command</h1>
-            <div class="text-slate-400 font-light">tarcommand allows you to quickly generate commands for creating
-                archives,
-                compressing and uncompressing archives, and
-                many other hard-to-remember features and options.</div>
-        </div>
-        <div class="container w-5/6 mt-4 mx-auto bg-slate-50">
-            <div>
-                <h2 class="hidden">Mode</h2>
-            </div>
-            <div class="main flex flex-wrap m-4 select-none">
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="99" checked />
-                    <span class="title px-2">Create</span>
-                </label>
+  <form name="tcform">
+    <div class="container w-5/6 mt-9 mx-auto px-4 pt-2 bg-slate-50">
+      <div class="columns-1 text-slate-200">TC</div>
+      <h1 class="col-auto text-center text-6xl pb-4 text-yellow-500">tar command</h1>
+      <div class="text-slate-400 font-light">tarcommand allows you to quickly generate commands for creating
+        archives,
+        compressing and uncompressing archives, and
+        many other hard-to-remember features and options.</div>
+    </div>
+    <div class="container w-5/6 mt-4 mx-auto bg-slate-50">
+      <div>
+        <h2 class="hidden">Mode</h2>
+      </div>
+      <div class="main flex flex-wrap m-4 select-none">
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="sfg" value="99" checked />
+          <span class="title px-2">Create</span>
+        </label>
 
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="114" />
-                    <span class="title px-2">Append</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="117" />
-                    <span class="title px-2">Update</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="65" />
-                    <span class="title px-2">Catenate</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="100" />
-                    <span class="title px-2">Diff</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="116" />
-                    <span class="title px-2">List</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="test_label" />
-                    <span class="title px-2">Test Label</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="127" />
-                    <span class="title px-2">Delete</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="sfg" value="120" />
-                    <span class="title px-2">Extract</span>
-                </label>
-            </div>
-        </div>
-        <div class="container w-5/6 mt-4 mx-auto bg-slate-50" id="arfw">
-            <div>
-                <h2 class="hidden">archiving formats</h2>
-            </div>
-            <div class="main flex flex-wrap m-4 select-none">
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="arf" value="none" checked />
-                    <span class="title px-2">none</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="arf" value="122" />
-                    <span class="title px-2">gzip</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="arf" value="104" />
-                    <span class="title px-2">bzip2</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="arf" value="lbzip2" />
-                    <span class="title px-2">lbzip2</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="arf" value="74" />
-                    <span class="title px-2">xz</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="arf" value="lzip" />
-                    <span class="title px-2">lzip</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="arf" value="lzma" />
-                    <span class="title px-2">lzma</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="arf" value="lzop" />
-                    <span class="title px-2">lzop</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="arf" value="zstd" />
-                    <span class="title px-2">zstd</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="arf" value="pzstd" />
-                    <span class="title px-2">pzstd</span>
-                </label>
-                <label class="flex radio p-2 cursor-pointer">
-                    <input class="my-auto transform scale-125" type="radio" name="arf" value="90" />
-                    <span class="title px-2">compress</span>
-                </label>
-            </div>
-        </div>
-        <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 pb-2 bg-slate-50">
-            <div class="flex items-center">
-                <input checked id="verbose-chk" type="checkbox" value="1"
-                    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="verbose-chk"
-                    class="ml-2 mr-4 text-sm font-medium text-gray-900 dark:text-gray-300">Verbose</label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="sfg" value="114" />
+          <span class="title px-2">Append</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="sfg" value="117" />
+          <span class="title px-2">Update</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="sfg" value="65" />
+          <span class="title px-2">Catenate</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="sfg" value="100" />
+          <span class="title px-2">Diff</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="sfg" value="116" />
+          <span class="title px-2">List</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="sfg" value="test_label" />
+          <span class="title px-2">Test Label</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="sfg" value="127" />
+          <span class="title px-2">Delete</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="sfg" value="120" />
+          <span class="title px-2">Extract</span>
+        </label>
+      </div>
+    </div>
+    <div class="container w-5/6 mt-4 mx-auto bg-slate-50" id="arfw">
+      <div>
+        <h2 class="hidden">archiving formats</h2>
+      </div>
+      <div class="main flex flex-wrap m-4 select-none">
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="arf" value="none" checked />
+          <span class="title px-2">none</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="arf" value="122" />
+          <span class="title px-2">gzip</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="arf" value="104" />
+          <span class="title px-2">bzip2</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="arf" value="lbzip2" />
+          <span class="title px-2">lbzip2</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="arf" value="74" />
+          <span class="title px-2">xz</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="arf" value="lzip" />
+          <span class="title px-2">lzip</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="arf" value="lzma" />
+          <span class="title px-2">lzma</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="arf" value="lzop" />
+          <span class="title px-2">lzop</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="arf" value="zstd" />
+          <span class="title px-2">zstd</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="arf" value="pzstd" />
+          <span class="title px-2">pzstd</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="arf" value="90" />
+          <span class="title px-2">compress</span>
+        </label>
+      </div>
+    </div>
+    <div class="container w-5/6 mt-4 mx-auto px-6 pt-2 pb-2 bg-slate-50">
+      <div class="flex items-center">
+        <input checked id="verbose-chk" type="checkbox" value="1"
+          class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label for="verbose-chk" class="ml-2 mr-4 text-sm font-medium text-gray-900 dark:text-gray-300">Verbose</label>
 
-                <input id="verbose2-chk" type="checkbox" value="1"
-                    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="verbose2-chk" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Extra
-                    Verbose</label>
-            </div>
-        </div>
-        <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 pb-2 bg-slate-50" id="spaw">
-            <div class="flex items-center">
-                <input id="sparse-chk" type="checkbox" value="1"
-                    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="sparse-chk" class="ml-2 mr-4 text-sm font-medium text-gray-900 dark:text-gray-300">Sparse
-                    Files</label>
-            </div>
-        </div>
-        <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 pb-2 bg-slate-50 hidden">
-            <div class="flex items-center mb-4">
-                <input id="permissions-chk" type="checkbox" value="1"
-                    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="permissions-chk"
-                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Overriding
-                    permissions</label>
-            </div>
-            <div class="overflow-x-auto relative">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="py-3 px-6">
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                (u) Owner Right
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                (g) Group Right
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                (o) Other Right
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
-                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                (1) Execute
-                            </th>
-                            <td class="py-4 px-6">
-                                <input checked type="checkbox" value=""
-                                    class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            </td>
-                            <td class="py-4 px-6">
-                                <input type="checkbox" value=""
-                                    class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            </td>
-                            <td class="py-4 px-6">
-                                <input type="checkbox" value=""
-                                    class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            </td>
-                        </tr>
-                        <tr class="bg-white dark:bg-gray-800">
-                            <th scope="row"
-                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                (2) Write
-                            </th>
-                            <td class="py-4 px-6">
-                                <input checked type="checkbox" value=""
-                                    class="w-4 h-4 text-yellow-400 bg-gray-100 rounded border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            </td>
-                            <td class="py-4 px-6">
-                                <input checked type="checkbox" value=""
-                                    class="w-4 h-4 text-yellow-400 bg-gray-100 rounded border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            </td>
-                            <td class="py-4 px-6">
-                                <input type="checkbox" value=""
-                                    class="w-4 h-4 text-yellow-400 bg-gray-100 rounded border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
-                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                (4) Read
-                            </th>
-                            <td class="py-4 px-6">
-                                <input checked type="checkbox" value=""
-                                    class="w-4 h-4 text-green-600 bg-gray-100 rounded border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            </td>
-                            <td class="py-4 px-6">
-                                <input checked type="checkbox" value=""
-                                    class="w-4 h-4 text-green-600 bg-gray-100 rounded border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            </td>
-                            <td class="py-4 px-6">
-                                <input checked type="checkbox" value=""
-                                    class="w-4 h-4 text-green-600 bg-gray-100 rounded border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 bg-slate-50 font-extralight">
-            <h3 class="text-slate-400">UNIX-Style:</h3>
-            <div class="pt-4 pb-4 text-2xl text-orange-300">$ <span id="taru" class="text-indigo-400 font-mono">tar
-                    -cvf etc.tar
-                    /etc</span>
-            </div>
-            <h3 class="text-slate-400">GNU-Style:</h3>
-            <div class="pt-4 pb-4 text-2xl text-orange-300">$ <span id="targ" class="text-indigo-400 font-mono">tar
-                    --create --verbose
-                    --file
-                    etc.tar
-                    /etc</span></div>
-        </div>
-        <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 pb-2 bg-slate-50 text-slate-500 font-extralight">
-            <table class="table-auto w-5/6 text-right">
-                <caption>~1.2G SQL dump file</caption>
-                <thead>
-                    <tr>
-                        <th>tool</th>
-                        <th>filesize</th>
-                        <th>time</th>
-                        <th>cpu time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>gzip</th>
-                        <td>147M</td>
-                        <td>15.578s</td>
-                        <td>16.599s</td>
-                    </tr>
-                    <tr>
-                        <th>bzip2</th>
-                        <td>85M</td>
-                        <td>1m19.798s</td>
-                        <td>1m22.932s</td>
-                    </tr>
-                    <tr>
-                        <th>lbzip2</th>
-                        <td>85M</td>
-                        <td>4.692s</td>
-                        <td>1m14.495s</td>
-                    </tr>
-                    <tr>
-                        <th>xz</th>
-                        <td class="text-green-600 font-bold">66M</td>
-                        <td>3m1.554s</td>
-                        <td>3m6.561s</td>
-                    </tr>
-                    <tr>
-                        <th>lzip</th>
-                        <td>69M</td>
-                        <td>3m1.640s</td>
-                        <td>3m2.038s</td>
-                    </tr>
-                    <tr>
-                        <th>lzma</th>
-                        <td class="text-green-600 font-bold">66M</td>
-                        <td>2m56.603s</td>
-                        <td>3m0.806s</td>
-                    </tr>
-                    <tr>
-                        <th>lzop</th>
-                        <td>275M</td>
-                        <td>2.681s</td>
-                        <td>3.207s</td>
-                    </tr>
-                    <tr>
-                        <th>zstd</th>
-                        <td>105M</td>
-                        <td>2.108s</td>
-                        <td>3.119s</td>
-                    </tr>
-                    <tr>
-                        <th>pzstd</th>
-                        <td>106M</td>
-                        <td class="text-green-600 font-bold">0.642s</td>
-                        <td>7.572s</td>
-                    </tr>
-                    <tr>
-                        <th>compress</th>
-                        <td>304M</td>
-                        <td>14.049s</td>
-                        <td>16.526s</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 pb-2 bg-slate-50 text-slate-500 font-extralight">
-            Links: <a href="https://linux-permissions.com/" class="underline">Linux Permissions</a>
-        </div>
-        <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 bg-slate-100 text-slate-400 font-extralight">
-            <a href="https://tarcommand.com/">&copy;2022 TAR Command, tarcommand.com</a>
-        </div>
-    </form>
+        <input id="verbose2-chk" type="checkbox" value="1"
+          class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label for="verbose2-chk" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Extra
+          Verbose</label>
+      </div>
+    </div>
+    <div class="container w-5/6 mt-4 mx-auto px-6 pt-2 pb-2 bg-slate-50" id="spaw">
+      <div class="flex items-center">
+        <input id="sparse-chk" type="checkbox" value="1"
+          class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label for="sparse-chk" class="ml-2 mr-4 text-sm font-medium text-gray-900 dark:text-gray-300">Sparse
+          Files</label>
+      </div>
+    </div>
+    <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 pb-2 bg-slate-50 hidden">
+      <div class="flex items-center mb-4">
+        <input id="permissions-chk" type="checkbox" value="1"
+          class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label for="permissions-chk" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Overriding
+          permissions</label>
+      </div>
+      <div class="overflow-x-auto relative">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" class="py-3 px-6">
+              </th>
+              <th scope="col" class="py-3 px-6">
+                (u) Owner Right
+              </th>
+              <th scope="col" class="py-3 px-6">
+                (g) Group Right
+              </th>
+              <th scope="col" class="py-3 px-6">
+                (o) Other Right
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                (1) Execute
+              </th>
+              <td class="py-4 px-6">
+                <input checked type="checkbox" value=""
+                  class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              </td>
+              <td class="py-4 px-6">
+                <input type="checkbox" value=""
+                  class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              </td>
+              <td class="py-4 px-6">
+                <input type="checkbox" value=""
+                  class="w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              </td>
+            </tr>
+            <tr class="bg-white dark:bg-gray-800">
+              <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                (2) Write
+              </th>
+              <td class="py-4 px-6">
+                <input checked type="checkbox" value=""
+                  class="w-4 h-4 text-yellow-400 bg-gray-100 rounded border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              </td>
+              <td class="py-4 px-6">
+                <input checked type="checkbox" value=""
+                  class="w-4 h-4 text-yellow-400 bg-gray-100 rounded border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              </td>
+              <td class="py-4 px-6">
+                <input type="checkbox" value=""
+                  class="w-4 h-4 text-yellow-400 bg-gray-100 rounded border-gray-300 focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              </td>
+            </tr>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                (4) Read
+              </th>
+              <td class="py-4 px-6">
+                <input checked type="checkbox" value=""
+                  class="w-4 h-4 text-green-600 bg-gray-100 rounded border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              </td>
+              <td class="py-4 px-6">
+                <input checked type="checkbox" value=""
+                  class="w-4 h-4 text-green-600 bg-gray-100 rounded border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              </td>
+              <td class="py-4 px-6">
+                <input checked type="checkbox" value=""
+                  class="w-4 h-4 text-green-600 bg-gray-100 rounded border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 bg-slate-50 font-extralight">
+      <h3 class="text-slate-400">UNIX-Style:</h3>
+      <div class="pt-4 pb-4 text-2xl text-orange-300">$ <span id="taru" class="text-indigo-400 font-mono">tar
+          -cvf etc.tar
+          /etc</span>
+      </div>
+      <h3 class="text-slate-400">GNU-Style:</h3>
+      <div class="pt-4 pb-4 text-2xl text-orange-300">$ <span id="targ" class="text-indigo-400 font-mono">tar
+          --create --verbose
+          --file
+          etc.tar
+          /etc</span></div>
+    </div>
+    <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 pb-2 bg-slate-50 text-slate-500 font-extralight">
+      <table class="table-auto w-5/6 text-right">
+        <caption>~1.2G SQL dump file</caption>
+        <thead>
+          <tr>
+            <th>tool</th>
+            <th>filesize</th>
+            <th>time</th>
+            <th>cpu time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>gzip</th>
+            <td>147M</td>
+            <td>15.578s</td>
+            <td>16.599s</td>
+          </tr>
+          <tr>
+            <th>bzip2</th>
+            <td>85M</td>
+            <td>1m19.798s</td>
+            <td>1m22.932s</td>
+          </tr>
+          <tr>
+            <th>lbzip2</th>
+            <td>85M</td>
+            <td>4.692s</td>
+            <td>1m14.495s</td>
+          </tr>
+          <tr>
+            <th>xz</th>
+            <td class="text-green-600 font-bold">66M</td>
+            <td>3m1.554s</td>
+            <td>3m6.561s</td>
+          </tr>
+          <tr>
+            <th>lzip</th>
+            <td>69M</td>
+            <td>3m1.640s</td>
+            <td>3m2.038s</td>
+          </tr>
+          <tr>
+            <th>lzma</th>
+            <td class="text-green-600 font-bold">66M</td>
+            <td>2m56.603s</td>
+            <td>3m0.806s</td>
+          </tr>
+          <tr>
+            <th>lzop</th>
+            <td>275M</td>
+            <td>2.681s</td>
+            <td>3.207s</td>
+          </tr>
+          <tr>
+            <th>zstd</th>
+            <td>105M</td>
+            <td>2.108s</td>
+            <td>3.119s</td>
+          </tr>
+          <tr>
+            <th>pzstd</th>
+            <td>106M</td>
+            <td class="text-green-600 font-bold">0.642s</td>
+            <td>7.572s</td>
+          </tr>
+          <tr>
+            <th>compress</th>
+            <td>304M</td>
+            <td>14.049s</td>
+            <td>16.526s</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 pb-2 bg-slate-50 text-slate-500 font-extralight">
+      Links: <a href="https://linux-permissions.com/" class="underline">Linux Permissions</a>
+    </div>
+    <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 bg-slate-100 text-slate-400 font-extralight">
+      <a href="https://tarcommand.com/">&copy;2022 TAR Command, tarcommand.com</a>
+    </div>
+  </form>
 </body>
 
 </html>
