@@ -81,6 +81,11 @@
           b = a;
           c = '.zst';
           break;
+        case 'pzstd':
+          a = arf;
+          b = a;
+          c = '.zst';
+          break;
         case '90':
           a = 'Z';
           b = 'compress';
@@ -509,6 +514,10 @@
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="arf" value="zstd" />
           <span class="title px-2">zstd</span>
+        </label>
+        <label class="flex radio p-2 cursor-pointer">
+          <input class="my-auto transform scale-125" type="radio" name="arf" value="pzstd" />
+          <span class="title px-2">pzstd</span>
         </label>
         <label class="flex radio p-2 cursor-pointer">
           <input class="my-auto transform scale-125" type="radio" name="arf" value="90" />
