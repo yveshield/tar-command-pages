@@ -52,8 +52,8 @@
                     c = '.bz2';
                     break;
                 case 'lbzip2':
-                    a = 'use-compress-program=lbzip2';
-                    b = a;
+                    a = 'I lbzip2 -';
+                    b = 'use-compress-program=lbzip2';
                     c = '.bz2';
                     break;
                 case '74':
@@ -82,8 +82,8 @@
                     c = '.zst';
                     break;
                 case 'pzstd':
-                    a = arf;
-                    b = a;
+                    a = 'I pzstd -';
+                    b = 'use-compress-program=pzstd';
                     c = '.zst';
                     break;
                 case '90':
@@ -102,13 +102,12 @@
             let c = v[2];
 
             if (a !== '') {
-                if (a.length === 1) {
+                if (a.length === 1 || a[0] === 'I') {
                     cmd.u += a;
-                    cmd.g += ' --' + b;
                 } else {
                     cmd.u += ' --' + a + ' -';
-                    cmd.g += ' --' + b;
                 }
+                cmd.g += ' --' + b;
             }
             return c
         };
