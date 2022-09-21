@@ -12,6 +12,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link href="/css/tailwind.css" rel="stylesheet">
   <script src="/js/main.js"></script>
+  <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
   <meta name="description"
     content="Quickly generate tar in archives and compressing modes. All formats included (gzip, bzip2, lbzip2, xz, zstd, etc). Ready to copy paste to your terminal in seconds." />
   <meta name="robots" content="noodp" />
@@ -131,24 +132,34 @@
         </label>
       </div>
     </div>
-    <div class="container w-5/6 mt-4 mx-auto px-6 pt-2 pb-2 bg-slate-50">
-      <div class="flex items-center">
-        <input checked id="verbose-chk" type="checkbox" value="1"
-          class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-        <label for="verbose-chk" class="ml-2 mr-4 text-sm font-medium text-gray-900 dark:text-gray-300">Verbose</label>
+    <div class="container w-5/6 mx-auto">
+      <div class="grid grid-cols-7 gap-4">
+        <div class="col-span-5">
+          <div class="container mx-auto px-6 pt-2 pb-2 bg-slate-50">
+            <div class="flex items-center">
+              <input checked id="verbose-chk" type="checkbox" value="1"
+                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <label for="verbose-chk"
+                class="ml-2 mr-4 text-sm font-medium text-gray-900 dark:text-gray-300">Verbose</label>
 
-        <input id="verbose2-chk" type="checkbox" value="1"
-          class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-        <label for="verbose2-chk" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Extra
-          Verbose</label>
-      </div>
-    </div>
-    <div class="container w-5/6 mt-4 mx-auto px-6 pt-2 pb-2 bg-slate-50" id="spaw">
-      <div class="flex items-center">
-        <input id="sparse-chk" type="checkbox" value="1"
-          class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-        <label for="sparse-chk" class="ml-2 mr-4 text-sm font-medium text-gray-900 dark:text-gray-300">Sparse
-          Files</label>
+              <input id="verbose2-chk" type="checkbox" value="1"
+                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <label for="verbose2-chk" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Extra
+                Verbose</label>
+            </div>
+          </div>
+          <div class="container mt-4 mx-auto px-6 pt-2 pb-2 bg-slate-50" id="spaw">
+            <div class="flex items-center">
+              <input id="sparse-chk" type="checkbox" value="1"
+                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <label for="sparse-chk" class="ml-2 mr-4 text-sm font-medium text-gray-900 dark:text-gray-300">Sparse
+                Files</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-2 bg-slate-50">
+          <div data-ea-publisher="..." data-ea-type="text"></div>
+        </div>
       </div>
     </div>
     <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 pb-2 bg-slate-50 hidden">
