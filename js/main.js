@@ -103,7 +103,7 @@ let set_cmd = function (cmd) {
 };
 
 let par_c = function () {
-    let cmd = { u: 'tar ', g: 'tar ' };
+    let cmd = { u: ' ', g: ' ' };
 
     cmd.u += '-c';
     cmd.g += '--create';
@@ -127,7 +127,7 @@ let par_c = function () {
 };
 
 let par_r = function () {
-    let cmd = { u: 'tar ', g: 'tar ' };
+    let cmd = { u: ' ', g: ' ' };
 
     cmd.u += '-r';
     cmd.g += '--append';
@@ -147,7 +147,7 @@ let par_r = function () {
 };
 
 let par_u = function () {
-    let cmd = { u: 'tar ', g: 'tar ' };
+    let cmd = { u: ' ', g: ' ' };
 
     cmd.u += '-u';
     cmd.g += '--update';
@@ -167,7 +167,7 @@ let par_u = function () {
 };
 
 let par_A = function () {
-    let cmd = { u: 'tar ', g: 'tar ' };
+    let cmd = { u: ' ', g: ' ' };
 
     cmd.u += '-A';
     cmd.g += '--concatenate';
@@ -187,7 +187,7 @@ let par_A = function () {
 };
 
 let par_d = function () {
-    let cmd = { u: 'tar ', g: 'tar ' };
+    let cmd = { u: ' ', g: ' ' };
 
     cmd.u += '-d';
     cmd.g += '--diff';
@@ -207,7 +207,7 @@ let par_d = function () {
 };
 
 let par_t = function () {
-    let cmd = { u: 'tar ', g: 'tar ' };
+    let cmd = { u: ' ', g: ' ' };
 
     cmd.u += '-t';
     cmd.g += '--list';
@@ -229,7 +229,7 @@ let par_t = function () {
 };
 
 let par_del = function () {
-    let cmd = { u: 'tar ', g: 'tar ' };
+    let cmd = { u: ' ', g: ' ' };
 
     cmd.u += '--delete -';
     cmd.g += '--delete';
@@ -249,7 +249,7 @@ let par_del = function () {
 };
 
 let par_tl = function () {
-    let cmd = { u: 'tar ', g: 'tar ' };
+    let cmd = { u: ' ', g: ' ' };
 
     cmd.u += '--test-label -';
     cmd.g += '--test-label';
@@ -269,7 +269,7 @@ let par_tl = function () {
 };
 
 let par_x = function () {
-    let cmd = { u: 'tar ', g: 'tar ' };
+    let cmd = { u: ' ', g: ' ' };
 
     cmd.u += '-x';
     cmd.g += '--extract';
