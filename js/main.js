@@ -478,3 +478,5 @@ if (
 } else {
     document.addEventListener("DOMContentLoaded", callback);
 }
+
+document.getElementById("year").innerHTML = new Date().getFullYear();
