@@ -309,7 +309,6 @@
             }
         }
         let p = window.location.search.substr(1).toUpperCase();
-        console.info(p);
         const r = /q=(?<a>.+)-(?<b>.+)/i;
         const found = p.match(r);
         if (found != undefined) {
