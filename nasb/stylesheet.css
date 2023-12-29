@@ -1,0 +1,160 @@
+.acenter {
+  display: block;
+  font-size: 1.125em;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+  text-indent: 0;
+  margin: 1em 0;
+}
+.acenter1 {
+  display: block;
+  text-align: center;
+  text-indent: 0;
+  margin: 1em 0;
+}
+.acenter2 {
+  display: block;
+  text-align: center;
+  text-indent: 0;
+}
+.aleft {
+  display: block;
+  text-align: left;
+  text-indent: 0;
+  margin: 1em 0;
+}
+.block {
+  display: block;
+  margin-left: 3em;
+  text-align: left;
+  text-indent: -1em;
+}
+.breakhere {
+  display: block;
+  margin: 1em 0;
+}
+.calibre {
+  display: block;
+  font-size: 1em;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0 5pt;
+}
+.calibre1 {
+  display: block;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 0.67em 0;
+}
+.calibre2 {
+  display: block;
+  list-style-type: none;
+  margin-bottom: 1em;
+  margin-right: 0;
+  margin-top: 1em;
+}
+.calibre3 {
+  display: list-item;
+}
+.calibre4 {
+  display: none;
+}
+.calibre5 {
+  display: block;
+  margin: 1em 0;
+}
+.calibre6 {
+  color: gray;
+  display: block;
+  height: 2px;
+  margin: 0.5em auto;
+  border: currentColor inset 1px;
+}
+.calibre7 {
+  line-height: 1.2;
+}
+.calibre8 {
+  display: block;
+  text-indent: 0;
+  margin: 1em 0;
+}
+.calibre9 {
+  font-weight: bold;
+}
+.calibre10 {
+  display: block;
+}
+.calibre11 {
+  display: block;
+}
+.calibre12 {
+  font-style: italic;
+}
+.calibre13 {
+  display: block;
+  list-style-type: decimal;
+  margin-bottom: 1em;
+  margin-right: 0;
+  margin-top: 1em;
+}
+.calibre14 {
+  font-size: 0.77778em;
+  line-height: normal;
+  vertical-align: super;
+}
+.footnote {
+  display: block;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: left;
+  margin: 1em 0;
+}
+.footnote1 {
+  font-size: 1em;
+  line-height: 200%;
+  margin-left: 1em;
+  text-align: left;
+}
+.footnote2 {
+  font-size: 1em;
+  line-height: 200%;
+  text-align: left;
+}
+.head {
+  display: block;
+  font-size: 1.125em;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+  margin: 1em 0;
+}
+.head1 {
+  display: block;
+  font-size: 1.41667em;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+  margin: 1em 0;
+}
+.head2 {
+  display: block;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  margin: 1em 0;
+}
+.large {
+  font-size: 2em;
+  line-height: 1.2;
+}
+.small {
+  font-size: 0.70588em;
+}
+.small1 {
+  font-size: 0.75em;
+}
+.small2 {
+  font-size: 0.66667em;
+}
