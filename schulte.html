@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schulte Grid | 舒尔特方格</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="/css/tailwind.css" rel="stylesheet">
+    <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+    <meta name="description"
+        content="Quickly generate tar in archives and compressing modes. All formats included (gzip, bzip2, lbzip2, xz, zstd, etc). Ready to copy paste to your terminal in seconds." />
+    <meta name="robots" content="noodp" />
+    <link rel="canonical" href="https://tarcommand.com/" />
+    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+    <meta name="og:title" content="Tar Command Generator | Tar Command" />
+    <meta name="og:description"
+        content="Quickly generate tar in archives and compressing modes. All formats included (gzip, bzip2, lbzip2, xz, zstd, etc). Ready to copy paste to your terminal in seconds." />
+    <meta name="og:url" content="https://tarcommand.com/" />
+    <meta name="og:site_name" content="Tar Command Generator" />
+    <meta name="og:type" content="website" />
+    <meta name="og:image" content="https://tarcommand.com/android-chrome-512x512.png" />
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src https://* 'self' data:; style-src 'self' 'unsafe-inline'; script-src-elem https://*.cloudflareinsights.com https://*.ethicalads.io 'self' 'unsafe-inline'; child-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'none';" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #options {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            padding: 10px;
+            border: 1px solid #333;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s;
+        }
+
+        .selected {
+            background-color: #f0c0c0;
+        }
+
+        #grid {
+            display: grid;
+            gap: 5px;
+            margin-top: 20px;
+            aspect-ratio: 1;
+        }
+
+        .cell {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #333;
+            background-color: #eaeaea;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-100" style="padding-top: 5rem;">
+    <h1 class="col-auto text-center text-6xl pb-4 text-yellow-500">Schulte Grid</h1>
+    <div class="w-5/6 mt-9 mx-auto px-4 pt-2 bg-slate-50 container text-center">
+        <div id="options" class="mx-auto">
+            <!-- 选项按钮 -->
+            <div class="option" data-value="3">3</div>
+            <div class="option" data-value="4">4</div>
+            <div class="option" data-value="5">5</div>
+            <div class="option" data-value="6">6</div>
+            <div class="option" data-value="7">7</div>
+            <div class="option" data-value="8">8</div>
+            <div class="option" data-value="9">9</div>
+        </div>
+    </div>
+    <div class="w-5/6 mt-9 mx-auto px-4 pt-2 bg-slate-50 container text-center">
+        <div id="grid" class="mx-auto"></div>
+    </div>
+    <div class="w-5/6 mt-9 mx-auto px-4 pt-2 bg-slate-50 container text-center">
+        <div data-ea-publisher="tarcommandcom" data-ea-type="text"></div>
+    </div>
+    <script>
+        let selectedValue = null;
+        let timer = null;
+        let startTime = null;
+
+        const options = document.querySelectorAll('.option');
+        const grid = document.getElementById('grid');
+
+        // 点击选项时的处理
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                options.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedValue = parseInt(option.dataset.value);
+                generateGrid(selectedValue);
+            });
+        });
+
+        // 生成 n x n 的表格
+        function generateGrid(n) {
+            grid.innerHTML = '';
+            grid.style.gridTemplateColumns = `repeat(${n}, 1fr)`;
+            const cellSize = 50; // 设置单元格的大小
+            grid.style.width = `${cellSize * n + (n - 1) * 5}px`; // 计算网格宽度
+            grid.style.height = `${cellSize * n + (n - 1) * 5}px`; // 计算网格高度
+            for (let i = 1; i <= n * n; i++) {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.textContent = i;
+                cell.style.width = `${cellSize}px`; // 设置单元格宽度
+                cell.style.height = `${cellSize}px`; // 设置单元格高度
+                grid.appendChild(cell);
+            }
+        }
+
+        // 打乱数组
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // 处理空格键
+        document.addEventListener('keydown', (event) => {
+            if (event.code === 'Space' && selectedValue) {
+                event.preventDefault();
+                const cells = Array.from(grid.children);
+                if (!timer) {
+                    // 开始计时
+                    startTime = new Date();
+                    timer = setInterval(() => {
+                        // 计时功能，不需要实际显示
+                    }, 1000);
+                    shuffleCells(cells);
+                } else {
+                    // 停止计时并显示耗时
+                    clearInterval(timer);
+                    timer = null;
+                    const endTime = new Date();
+                    const timeTaken = Math.floor((endTime - startTime) / 1000);
+                    alert(`耗时: ${timeTaken}秒`);
+                    shuffleCells(cells);
+                }
+            }
+        });
+
+        // 打乱表格中的单元格
+        function shuffleCells(cells) {
+            const numbers = cells.map(cell => parseInt(cell.textContent));
+            const shuffledNumbers = shuffle(numbers);
+            cells.forEach((cell, index) => {
+                cell.textContent = shuffledNumbers[index];
+            });
+        }
+
+        // 初始化时选中5并生成5x5表格
+        document.addEventListener('DOMContentLoaded', () => {
+            const defaultOption = options[2]; // 选择索引为2的选项（数字5）
+            defaultOption.classList.add('selected');
+            selectedValue = 5;
+            generateGrid(selectedValue);
+        });
+    </script>
+</body>
+
+</html>
