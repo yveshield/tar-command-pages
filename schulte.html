@@ -89,6 +89,7 @@
         </div>
     </div>
     <div class="w-5/6 mt-9 mx-auto px-4 pt-2 bg-slate-50 container text-center">
+        <div id="score">按下空格键开始，再次按下空格键结束</div>
         <div id="grid" class="mx-auto"></div>
     </div>
     <div class="w-5/6 mt-9 mx-auto px-4 pt-2 bg-slate-50 container text-center">
@@ -144,6 +145,7 @@
                 event.preventDefault();
                 const cells = Array.from(grid.children);
                 if (!timer) {
+                    document.getElementById("score").innerText = "已开始";
                     // 开始计时
                     startTime = new Date();
                     timer = setInterval(() => {
@@ -156,8 +158,8 @@
                     timer = null;
                     const endTime = new Date();
                     const timeTaken = Math.floor((endTime - startTime) / 1000);
-                    alert(`耗时: ${timeTaken}秒`);
-                    shuffleCells(cells);
+                    document.getElementById("score").innerText = `耗时: ${timeTaken}秒`;
+                    generateGrid(selectedValue);
                 }
             }
         });
