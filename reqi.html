@@ -108,6 +108,12 @@
         const timeDifference = document.getElementById('timeDifference');
         const calendarDiv = document.getElementById('calendar');
 
+        let lastChanged = "datetime1";  // 默认固定开始日期
+
+        // 更新最后修改的日期框标记
+        datetime1.addEventListener('input', () => { lastChanged = "datetime1"; });
+        datetime2.addEventListener('input', () => { lastChanged = "datetime2"; });
+
         function calculateDifference() {
             if (!datetime1.value || !datetime2.value) {
                 dayDifference.value = ""; // 清空天数差值显示
@@ -142,17 +148,27 @@
 
         function parseDifference() {
             const date1 = new Date(datetime1.value);
+            const date2 = new Date(datetime2.value);
 
-            if (dayDifference.value && datetime1.value) {
+            if (dayDifference.value && timeDifference.value) {
                 const days = parseInt(dayDifference.value.match(/-?\d+/)[0], 10);
                 const [hours, minutes] = timeDifference.value.split(":").map(Number);
 
-                const newDate = new Date(date1);
-                newDate.setDate(newDate.getDate() + days);
-                newDate.setHours(newDate.getHours() + hours * Math.sign(days));
-                newDate.setMinutes(newDate.getMinutes() + minutes * Math.sign(days));
-
-                datetime2.value = formatDate(newDate); // 格式化成 'YYYY-MM-DDTHH:MM'
+                if (lastChanged === "datetime1") {
+                    // 固定 datetime1，计算 datetime2
+                    const newDate = new Date(date1);
+                    newDate.setDate(newDate.getDate() + days);
+                    newDate.setHours(newDate.getHours() + hours);
+                    newDate.setMinutes(newDate.getMinutes() + minutes);
+                    datetime2.value = formatDate(newDate);
+                } else if (lastChanged === "datetime2") {
+                    // 固定 datetime2，计算 datetime1
+                    const newDate = new Date(date2);
+                    newDate.setDate(newDate.getDate() - days);
+                    newDate.setHours(newDate.getHours() - hours);
+                    newDate.setMinutes(newDate.getMinutes() - minutes);
+                    datetime1.value = formatDate(newDate);
+                }
             }
             generateCalendar();
         }
@@ -175,6 +191,15 @@
         }
 
         setInitialDates();
+
+        function getMonthYearString(date) {
+            // 获取浏览器的默认语言环境
+            const locale = navigator.language || 'en-US';
+
+            // 使用Intl.DateTimeFormat格式化月份和年份
+            const formatter = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long' });
+            return formatter.format(date);
+        }
 
         function generateCalendar() {
             // 清空之前的日历
@@ -231,7 +256,8 @@
                 const monthDiv = document.createElement('div');
                 monthDiv.className = 'month';
 
-                const monthYear = `${currentDate.getFullYear()}年${currentDate.getMonth() + 1}月`;
+                //const monthYear = `${currentDate.getFullYear()}年${currentDate.getMonth() + 1}月`;
+                const monthYear = getMonthYearString(currentDate);
                 const monthHeader = document.createElement('h3');
                 monthHeader.textContent = monthYear;
                 monthDiv.appendChild(monthHeader);
