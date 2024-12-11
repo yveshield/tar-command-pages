@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer | 倒计时</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="/css/tailwind.css" rel="stylesheet">
+    <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+    <meta name="description"
+        content="Quickly generate tar in archives and compressing modes. All formats included (gzip, bzip2, lbzip2, xz, zstd, etc). Ready to copy paste to your terminal in seconds." />
+    <meta name="robots" content="noodp" />
+    <link rel="canonical" href="https://tarcommand.com/" />
+    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+    <meta name="og:title" content="Tar Command Generator | Tar Command" />
+    <meta name="og:description"
+        content="Quickly generate tar in archives and compressing modes. All formats included (gzip, bzip2, lbzip2, xz, zstd, etc). Ready to copy paste to your terminal in seconds." />
+    <meta name="og:url" content="https://tarcommand.com/" />
+    <meta name="og:site_name" content="Tar Command Generator" />
+    <meta name="og:type" content="website" />
+    <meta name="og:image" content="https://tarcommand.com/android-chrome-512x512.png" />
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src https://* 'self' data:; style-src 'self' 'unsafe-inline'; script-src-elem https://*.cloudflareinsights.com https://*.ethicalads.io 'self' 'unsafe-inline'; child-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'none';" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-100" style="padding-top: 5rem;">
+    <h1 class="col-auto text-center text-6xl pb-4 text-yellow-500">Countdown Timer</h1>
+    <div class="w-5/6 mt-9 mx-auto px-4 pt-2 bg-slate-50 container text-center">
+        <input type="number" id="days" min="0" max="9999" placeholder="Days" value="0">
+        <input type="time" id="timePart" value="00:00:00">
+        <input type="date" id="endDate">
+        <input type="time" id="endTime">
+    </div>
+    <div class="w-5/6 mt-9 mx-auto px-4 pt-2 bg-slate-50 container text-center">
+        <button id="startPauseBtn">Start</button>
+    </div>
+    <div class="w-5/6 mt-9 mx-auto px-4 pt-2 bg-slate-50 container text-center">
+        <div data-ea-publisher="tarcommandcom" data-ea-type="text"></div>
+    </div>
+    <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 bg-slate-100 text-slate-400 font-extralight">
+        <a href="https://tarcommand.com/">&copy;<span id="year"></span> TAR Command, tarcommand.com</a>
+    </div>
+    <script>
+        let interval = null;
+        const daysInput = document.getElementById("days");
+        const timeInput = document.getElementById("timePart");
+        const endDateInput = document.getElementById("endDate");
+        const endTimeInput = document.getElementById("endTime");
+        const startPauseBtn = document.getElementById("startPauseBtn");
+        let isRunning = false;
+
+        function calculateEndDateTime() {
+            const days = parseInt(daysInput.value) || 0;
+            const timeParts = (timeInput.value || "00:00:00").split(":");
+            const now = new Date();
+            const target = new Date(
+                now.getFullYear(),
+                now.getMonth(),
+                now.getDate() + days,
+                parseInt(timeParts[0]),
+                parseInt(timeParts[1]),
+                parseInt(timeParts[2])
+            );
+            return target;
+        }
+
+        function updateInputsFromEndTime(target) {
+            const now = new Date();
+            let diff = Math.max(0, target - now);
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            diff %= 1000 * 60 * 60 * 24;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            diff %= 1000 * 60 * 60;
+            const minutes = Math.floor(diff / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            daysInput.value = days;
+            timeInput.value = [hours, minutes, seconds].map(n => String(n).padStart(2, "0")).join(":");
+        }
+
+        function startCountdown(target) {
+            if (interval) clearInterval(interval);
+            interval = setInterval(() => {
+                const now = new Date();
+                const diff = target - now;
+                if (diff <= 0) {
+                    clearInterval(interval);
+                    alert("Countdown finished!");
+                    return;
+                }
+                updateInputsFromEndTime(target);
+            }, 1000);
+        }
+
+        startPauseBtn.addEventListener("click", () => {
+            if (isRunning) {
+                // Pause the countdown
+                clearInterval(interval);
+                isRunning = false;
+                startPauseBtn.textContent = "Start";
+                daysInput.disabled = false;
+                timeInput.disabled = false;
+                endDateInput.disabled = false;
+                endTimeInput.disabled = false;
+            } else {
+                // Start the countdown
+                let target;
+                if (!endDateInput.value || !endTimeInput.value) {
+                    // Calculate end time from days and time
+                    target = calculateEndDateTime();
+                    const targetDate = target.toISOString().split("T")[0];
+                    const targetTime = target.toTimeString().split(" ")[0];
+                    endDateInput.value = targetDate;
+                    endTimeInput.value = targetTime;
+                } else {
+                    // Calculate from endDate and endTime
+                    const endDate = new Date(endDateInput.value);
+                    const timeParts = (endTimeInput.value || "00:00:00").split(":");
+                    target = new Date(
+                        endDate.getFullYear(),
+                        endDate.getMonth(),
+                        endDate.getDate(),
+                        parseInt(timeParts[0]),
+                        parseInt(timeParts[1]),
+                        parseInt(timeParts[2])
+                    );
+                    daysInput.value = "";
+                    timeInput.value = "";
+                }
+                startCountdown(target);
+                isRunning = true;
+                startPauseBtn.textContent = "Pause";
+                daysInput.disabled = true;
+                timeInput.disabled = true;
+                endDateInput.disabled = true;
+                endTimeInput.disabled = true;
+            }
+        });
+
+        [daysInput, timeInput].forEach(input => input.addEventListener("input", () => {
+            endDateInput.value = "";
+            endTimeInput.value = "";
+        }));
+
+        [endDateInput, endTimeInput].forEach(input => input.addEventListener("input", () => {
+            daysInput.value = "";
+            timeInput.value = "";
+        }));
+    </script>
+</body>
+
+</html>
