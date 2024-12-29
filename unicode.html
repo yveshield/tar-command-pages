@@ -26,7 +26,23 @@
     <meta name="og:image" content="https://tarcommand.com/android-chrome-512x512.png" />
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; img-src https://* 'self' data:; style-src 'self' 'unsafe-inline'; script-src-elem https://*.cloudflareinsights.com https://*.ethicalads.io 'self' 'unsafe-inline'; child-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'none';" />
+    <style>
+        @font-face {
+            font-family: 'Noto Sans';
+            /* 自定义字体名称 */
+            src: url('css/NotoSans-Regular.ttf') format('truetype');
+            /* 指定路径和字体格式 */
+            font-weight: normal;
+            /* 字体粗细 */
+            font-style: normal;
+            /* 字体样式 */
+        }
 
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            /* 回退到系统默认 sans-serif 字体 */
+        }
+    </style>
 </head>
 
 <body class="bg-slate-100">
