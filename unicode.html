@@ -51,7 +51,7 @@
     <div class="w-5/6 mt-9 mx-auto px-4 pt-2 bg-slate-50 container">
         <table id="ut"
             class="hide w-full text-sm text-left text-gray-500 dark:text-gray-400 border-collapse border border-slate-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+            <thead class="text-sm text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         U+
@@ -294,7 +294,7 @@
             let y = Math.ceil(b / 16);
             let container = document.querySelector('.container');
             let table = document.createElement('table');
-            table.setAttribute('class', "text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400");
+            table.setAttribute('class', "text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400");
             let caption = document.createElement('caption');
             caption.setAttribute('class', 'text-sm');
             caption.innerText = title;
@@ -308,13 +308,13 @@
                 row.setAttribute("class", "bg-white border-b dark:bg-gray-800 dark:border-gray-700");
                 let th = document.createElement("TH");
                 th.setAttribute("scope", "row");
-                th.setAttribute("class", "px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white");
+                th.setAttribute("class", "px-6 py-4 font-semibold text-gray-900 whitespace-nowrap dark:text-white");
                 let k = (i * 16).toString(16).toUpperCase().padStart(4, '0').replace(/0$/, '_');
                 th.innerHTML = k;
                 row.appendChild(th);
                 for (let j = 0; j < 16; j++) {
                     let cell = row.insertCell(j + 1);
-                    cell.setAttribute("class", "px-6 py-4 font-medium");
+                    cell.setAttribute("class", "px-6 py-4 font-semibold");
                     let k = i * 16 + j;
                     if (k <= 31) {
                         cell.innerHTML = s[k];
