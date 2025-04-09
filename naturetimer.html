@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         #map {
-            height: 100vh;
+            height: calc(100vh - 16px);
         }
 
         .timezone-line {
@@ -22,7 +22,7 @@
 <body>
     <div id="map"></div>
     <div id="timeInfo"
-        style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+        style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
             background: rgba(255,255,255,0.8); padding: 6px 12px; border-radius: 6px; font-family: sans-serif; font-size: 14px; z-index: 1000;">
         加载中...
     </div>
