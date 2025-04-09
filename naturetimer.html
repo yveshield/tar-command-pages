@@ -21,7 +21,11 @@
 
 <body>
     <div id="map"></div>
-
+    <div id="timeInfo"
+        style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+            background: rgba(255,255,255,0.8); padding: 6px 12px; border-radius: 6px; font-family: sans-serif; font-size: 14px; z-index: 1000;">
+        加载中...
+    </div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
@@ -53,7 +57,7 @@
             // 绘制西侧边界线
             if (westEdge >= 75 && westEdge <= 135) {
                 L.polyline([[15, westEdge], [55, westEdge]], {
-                    color: '#aaa',
+                    color: '#000',
                     dashArray: '4',
                     weight: 1
                 }).addTo(map);
@@ -62,7 +66,7 @@
             // 绘制东侧边界线
             if (eastEdge >= 75 && eastEdge <= 135) {
                 L.polyline([[15, eastEdge], [55, eastEdge]], {
-                    color: '#aaa',
+                    color: '#000',
                     dashArray: '4',
                     weight: 1
                 }).addTo(map);
@@ -71,51 +75,39 @@
 
         // 获取浏览器位置并标记
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(pos => {
-                const lat = pos.coords.latitude;
-                const lon = pos.coords.longitude;
-                const marker = L.marker([lat, lon], {
-                    title: "当前位置",
-                    icon: L.icon({
-                        iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-red.png',
-                        iconSize: [25, 41],
-                        iconAnchor: [12, 41],
-                        popupAnchor: [1, -34]
-                    })
-                }).addTo(map);
-                marker.bindPopup("你在这里").openPopup();
-                map.setView([lat, lon], 6);
-            }, err => {
-                alert("无法获取地理位置：" + err.message);
-            });
+            setInterval(function () {
+                navigator.geolocation.getCurrentPosition(pos => {
+                    const lat = pos.coords.latitude;
+                    const lon = pos.coords.longitude;
+                    const marker = L.marker([lat, lon], {
+                        title: "当前位置",
+                        icon: L.icon({
+                            iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-red.png',
+                            iconSize: [25, 41],
+                            iconAnchor: [12, 41],
+                            popupAnchor: [1, -34]
+                        })
+                    }).addTo(map);
+                    marker.bindPopup("你在这里").openPopup();
+                    map.setView([lat, lon], 6);
+
+                    const offset = Math.round(lon / 15);
+
+                    const localTime = new Date();
+                    const utcTime = new Date(localTime.getTime() + localTime.getTimezoneOffset() * 60000);
+
+                    const theoryTime = new Date(utcTime.getTime() + offset * 60 * 60000);
+
+                    const result = `${theoryTime.toLocaleString()} UTC${offset >= 0 ? '+' : ''}${offset}`;
+                    document.getElementById("timeInfo").innerHTML = result;
+
+                }, err => {
+                    alert("无法获取地理位置：" + err.message);
+                });
+            }, 1000);
         } else {
             alert("当前浏览器不支持定位功能。");
         }
-    </script>
-    <div id="timeInfo"
-        style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-        background: rgba(255,255,255,0.8); padding: 6px 12px; border-radius: 6px; font-family: sans-serif; font-size: 14px; z-index: 1000;">
-        加载中...
-    </div>
-
-    <script>
-        function getTimeZoneInfo() {
-            const localTime = new Date();
-            const utcTime = new Date(localTime.getTime() + localTime.getTimezoneOffset() * 60000);
-
-            navigator.geolocation.getCurrentPosition(pos => {
-                const lon = pos.coords.longitude;
-                const offset = Math.round(lon / 15);
-                const theoryTime = new Date(utcTime.getTime() + offset * 60 * 60000);
-
-                const result = `${theoryTime.toLocaleString()} UTC${offset >= 0 ? '+' : ''}${offset}`;
-                document.getElementById("timeInfo").innerHTML = result;
-            }, () => {
-                document.getElementById("timeInfo").innerText = "无法获取地理位置";
-            });
-        }
-
-        getTimeZoneInfo();
     </script>
 
 </body>
