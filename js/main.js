@@ -340,17 +340,23 @@ let j = function () {
   const paths = ['tar'];
 
   const sfgSelected = document.querySelector('input[name="sfg"]:checked');
-  const sfgText = sfgSelected?.closest('label')?.querySelector('.title')?.textContent.trim().toLowerCase();
+  let sfgText = sfgSelected?.closest('label')?.querySelector('.title')?.textContent.trim().toLowerCase();
 
-  if (sfgText) paths.push(sfgText);
+  if (sfgText) {
+    if (sfgText === 'test label') sfgText = 'test';
+    paths.push(sfgText);
+  }
 
   const triggerValues = ['create', 'list', 'extract'];
 
   if (triggerValues.includes(sfgText)) {
     const arfSelected = document.querySelector('input[name="arf"]:checked');
-    const arfText = arfSelected?.closest('label')?.querySelector('.title')?.textContent.trim().toLowerCase();
+    let arfText = arfSelected?.closest('label')?.querySelector('.title')?.textContent.trim().toLowerCase();
 
-    if (arfText && arfText !== 'none') paths.push(arfText);
+    if (arfText && arfText !== 'none') {
+      if (arfText === 'compress') arfText = 'z';
+      paths.push(arfText);
+    }
   }
 
   const verb = document.getElementById('verbose-chk').checked;
