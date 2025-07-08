@@ -342,7 +342,10 @@ let j = function () {
   const sfgSelected = document.querySelector('input[name="sfg"]:checked');
   const sfgText = sfgSelected?.closest('label')?.querySelector('.title')?.textContent.trim().toLowerCase();
 
-  if (sfgText) paths.push(sfgText);
+  if (sfgText) {
+    sfgText = sfgText.replace(/\s+/g, '-');
+    paths.push(sfgText);
+  }
 
   const triggerValues = ['create', 'list', 'extract'];
 
