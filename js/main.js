@@ -350,7 +350,7 @@ let j = function () {
     const arfSelected = document.querySelector('input[name="arf"]:checked');
     const arfText = arfSelected?.closest('label')?.querySelector('.title')?.textContent.trim().toLowerCase();
 
-    if (arfText && arfText !== 'nono') paths.push(arfText);
+    if (arfText && arfText !== 'none') paths.push(arfText);
   }
 
   const verb = document.getElementById('verbose-chk').checked;
