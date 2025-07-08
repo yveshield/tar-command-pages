@@ -336,6 +336,42 @@ let par = function () {
   }
 }
 
+let j = function () {
+  const paths = ['tar'];
+
+  const sfgSelected = document.querySelector('input[name="sfg"]:checked');
+  const sfgText = sfgSelected?.closest('label')?.querySelector('.title')?.textContent.trim().toLowerCase();
+
+  if (sfgText) paths.push(sfgText);
+
+  const triggerValues = ['create', 'list', 'extract'];
+
+  if (triggerValues.includes(sfgText)) {
+    const arfSelected = document.querySelector('input[name="arf"]:checked');
+    const arfText = arfSelected?.closest('label')?.querySelector('.title')?.textContent.trim().toLowerCase();
+
+    if (arfText) paths.push(arfText);
+  }
+
+  const verb = document.getElementById('verbose-chk').checked;
+  const verb2 = document.getElementById('verbose2-chk').checked;
+
+  if (verb2) {
+    paths.push('vv');
+  } else if (verb) {
+    paths.push('v');
+  }
+
+  if (sfgText === 'create') {
+    const sparse = document.getElementById('sparse-chk').checked;
+
+    if (sparse) paths.push('sparse');
+  }
+
+  const pathname = '/' + paths.join('-') + '.html';
+  console.info(pathname);
+}
+
 let callback = function () {
   let rad = document.getElementsByName('sfg')
   let prev = null
@@ -347,6 +383,7 @@ let callback = function () {
           prev = this
         }
         par()
+        j()
       },
       true
     )
@@ -362,6 +399,7 @@ let callback = function () {
           prev = this
         }
         par()
+        j()
       },
       true
     )
@@ -375,6 +413,7 @@ let callback = function () {
         document.getElementById('verbose2-chk').checked = false
       }
       par()
+      j()
     },
     true
   )
@@ -390,6 +429,7 @@ let callback = function () {
         }
       }
       par()
+      j()
     },
     true
   )
@@ -398,6 +438,7 @@ let callback = function () {
     'change',
     function () {
       par()
+      j()
     },
     true
   )

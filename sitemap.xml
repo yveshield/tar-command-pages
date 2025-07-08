@@ -9,6 +9,10 @@
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
+    <loc>https://tarcommand.com/tar-create-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
     <loc>https://tarcommand.com/tar-append.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
@@ -91,6 +95,46 @@
   <url>
     <loc>https://tarcommand.com/tar-create-z.html</loc>
     <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-gzip-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-bzip2-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+    <url>
+    <loc>https://tarcommand.com/tar-create-lbzip2-sparse.html</loc>
+    <lastmod>2025-07-17</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-xz-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-lzip-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-lzma-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-lzop-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-zstd-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-pzstd-sparse.html</loc>
+    <lastmod>2025-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-z-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
   </url>
   <url>
     <loc>https://tarcommand.com/tar-list-gzip.html</loc>
@@ -217,6 +261,10 @@
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
+    <loc>https://tarcommand.com/tar-create-v-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
     <loc>https://tarcommand.com/tar-append-v.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
@@ -299,6 +347,46 @@
   <url>
     <loc>https://tarcommand.com/tar-create-z-v.html</loc>
     <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-gzip-v-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-bzip2-v-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+    <url>
+    <loc>https://tarcommand.com/tar-create-lbzip2-v-sparse.html</loc>
+    <lastmod>2025-07-17</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-xz-v-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-lzip-v-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-lzma-v-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-lzop-v-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-zstd-v-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-pzstd-v-sparse.html</loc>
+    <lastmod>2025-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-z-v-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
   </url>
   <url>
     <loc>https://tarcommand.com/tar-list-gzip-v.html</loc>
@@ -425,6 +513,10 @@
     <lastmod>2022-09-08</lastmod>
   </url>
   <url>
+    <loc>https://tarcommand.com/tar-create-vv-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
     <loc>https://tarcommand.com/tar-append-vv.html</loc>
     <lastmod>2022-09-08</lastmod>
   </url>
@@ -507,6 +599,46 @@
   <url>
     <loc>https://tarcommand.com/tar-create-z-vv.html</loc>
     <lastmod>2022-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-gzip-vv-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-bzip2-vv-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+    <url>
+    <loc>https://tarcommand.com/tar-create-lbzip2-vv-sparse.html</loc>
+    <lastmod>2025-07-17</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-xz-vv-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-lzip-vv-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-lzma-vv-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-lzop-vv-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-zstd-vv-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-pzstd-vv-sparse.html</loc>
+    <lastmod>2025-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://tarcommand.com/tar-create-z-vv-sparse.html</loc>
+    <lastmod>2025-07-08</lastmod>
   </url>
   <url>
     <loc>https://tarcommand.com/tar-list-gzip-vv.html</loc>
