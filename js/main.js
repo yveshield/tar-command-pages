@@ -514,6 +514,7 @@ let callback = function () {
         set_arf(opt[1])
         break
       case 'test':
+        val = 'test';
         break
       case 'delete':
         val = '127'
