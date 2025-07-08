@@ -340,10 +340,10 @@ let j = function () {
   const paths = ['tar'];
 
   const sfgSelected = document.querySelector('input[name="sfg"]:checked');
-  const sfgText = sfgSelected?.closest('label')?.querySelector('.title')?.textContent.trim().toLowerCase();
+  let sfgText = sfgSelected?.closest('label')?.querySelector('.title')?.textContent.trim().toLowerCase();
 
   if (sfgText) {
-    sfgText = sfgText.replace(/\s+/g, '-');
+    sfgText = sfgText.replace(/\s+/g, '_');
     paths.push(sfgText);
   }
 
