@@ -321,7 +321,7 @@ let par = function () {
       arfw.style.display = ''
       par_t()
       break
-    case 'test_label':
+    case 'test':
       arfw.style.display = 'none'
       par_tl()
       break
@@ -340,12 +340,9 @@ let j = function () {
   const paths = ['tar'];
 
   const sfgSelected = document.querySelector('input[name="sfg"]:checked');
-  let sfgText = sfgSelected?.closest('label')?.querySelector('.title')?.textContent.trim().toLowerCase();
+  const sfgText = sfgSelected?.closest('label')?.querySelector('.title')?.textContent.trim().toLowerCase();
 
-  if (sfgText) {
-    sfgText = sfgText.replace(/\s+/g, '_');
-    paths.push(sfgText);
-  }
+  if (sfgText) paths.push(sfgText);
 
   const triggerValues = ['create', 'list', 'extract'];
 
@@ -511,10 +508,6 @@ let callback = function () {
         set_arf(opt[1])
         break
       case 'test':
-      case 'test_label':
-        if (opt[1] == 'label') {
-          val = 'test_label'
-        }
         break
       case 'delete':
         val = '127'
