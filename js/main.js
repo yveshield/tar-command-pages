@@ -369,7 +369,9 @@ let j = function () {
   }
 
   const pathname = '/' + paths.join('-') + '.html';
-  console.info(pathname);
+  if (pathname !== window.location.pathname) {
+    window.location.href = pathname;
+  }
 }
 
 let callback = function () {
