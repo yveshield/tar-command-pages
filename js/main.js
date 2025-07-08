@@ -511,6 +511,7 @@ let callback = function () {
         set_arf(opt[1])
         break
       case 'test':
+      case 'test_label':
         if (opt[1] == 'label') {
           val = 'test_label'
         }
