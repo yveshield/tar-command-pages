@@ -524,7 +524,14 @@ let callback = function () {
     if (val != '') {
       document.tcform.sfg.value = val
       if (res.includes('-vv')) {
-        document.getElementById('verbose2-chk').checked = true
+        document.getElementById('verbose2-chk').checked = true;
+      } else if (res.includes('-v')) {
+        document.getElementById('verbose-chk').checked = true
+      } else {
+        document.getElementById('verbose-chk').checked = false;
+      }
+      if (res.includes('-sparse')) {
+        document.getElementById('sparse-chk').checked = true;
       }
       par()
     }
