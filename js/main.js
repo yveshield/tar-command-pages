@@ -390,7 +390,7 @@ let callback = function () {
         if (this !== prev) {
           prev = this
         }
-        par()
+        // par()
         j()
       },
       true
@@ -406,7 +406,7 @@ let callback = function () {
         if (this !== prev) {
           prev = this
         }
-        par()
+        // par()
         j()
       },
       true
@@ -420,7 +420,7 @@ let callback = function () {
       if (!verb) {
         document.getElementById('verbose2-chk').checked = false
       }
-      par()
+      // par()
       j()
     },
     true
@@ -436,7 +436,7 @@ let callback = function () {
           document.getElementById('verbose-chk').checked = true
         }
       }
-      par()
+      // par()
       j()
     },
     true
@@ -445,7 +445,7 @@ let callback = function () {
   document.getElementById('sparse-chk').addEventListener(
     'change',
     function () {
-      par()
+      // par()
       j()
     },
     true
