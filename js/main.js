@@ -408,6 +408,66 @@ function generateTitleAndDescription(path) {
   };
 }
 
+function generateRandomTarLinks(count = 20) {
+  const actions = ['create', 'extract', 'list', 'update', 'delete', 'diff', 'concatenate', 'test'];
+  const compressions = ['gzip', 'bzip2', 'xz', 'zstd', 'lzop', 'lzma', 'lzip', 'z', 'pzstd', 'pigz', 'lbzip2'];
+  const verboseFlags = ['v', 'vv'];
+  const sparse = 'sparse';
+
+  const shuffle = arr => arr.sort(() => 0.5 - Math.random());
+  const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+  const slugify = parts => '/tar-' + parts.filter(Boolean).join('-') + '.html';
+
+  const formatTitle = (action, comp, mods) => {
+    let t = `tar ${action}`;
+    if (comp) t += ` with ${comp} compression`;
+    if (mods.length) t += ` (${mods.join(', ')})`;
+    return t;
+  };
+
+  const seen = new Set();
+  const results = [];
+
+  while (results.length < count) {
+    const action = pick(actions);
+
+    // 是否允许压缩
+    const allowCompression = ['create', 'list', 'extract'].includes(action);
+    const comp = allowCompression && Math.random() < 0.8 ? pick(compressions) : null;
+
+    // 修饰符
+    const mods = [];
+
+    // sparse 仅适用于 create
+    if (action === 'create' && Math.random() < 0.5) {
+      mods.push(sparse);
+    }
+
+    // v / vv（通用）
+    if (Math.random() < 0.5) {
+      mods.push(pick(verboseFlags));
+    }
+
+    const parts = [action, comp, ...mods];
+    const path = slugify(parts);
+
+    if (seen.has(path)) continue;
+    seen.add(path);
+
+    const title = formatTitle(action, comp, mods);
+    results.push(`<li><a href="${path}">${title}</a></li>`);
+  }
+
+  // 写入 div[id="links"]
+  const container = document.getElementById('links');
+  if (container) {
+    container.innerHTML = `<ul>\n${results.join('\n')}\n</ul>`;
+  }
+
+  return results; // 也可返回用于其它用途
+}
+
 let callback = function () {
   let rad = document.getElementsByName('sfg')
   let prev = null
@@ -590,6 +650,8 @@ let callback = function () {
     }
   }
   document.getElementById('year').innerHTML = new Date().getFullYear()
+
+  generateRandomTarLinks(20);
 }
 
 if (
