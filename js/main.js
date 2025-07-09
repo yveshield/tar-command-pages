@@ -377,6 +377,37 @@ let j = function () {
   }
 }
 
+function generateTitleAndDescription(path) {
+  const parts = path
+    .replace(/^\/?tar-/, '') // remove "tar-"
+    .replace(/\.html$/, '')  // remove ".html"
+    .split('-');
+
+  const [actionRaw, ...rest] = parts;
+  const compressionList = ['gzip', 'bzip2', 'xz', 'zstd', 'lzop', 'lzma', 'lzip', 'z', 'pzstd', 'lbzip2', 'pigz', 'pixz'];
+  const modifierList = ['sparse', 'v', 'vv', 'test'];
+
+  const action = actionRaw;
+  const compression = rest.find(r => compressionList.includes(r)) || null;
+  const modifiers = rest.filter(r => modifierList.includes(r));
+
+  // Title
+  let title = `tar ${action}`;
+  if (compression) title += ` with ${compression} compression`;
+  if (modifiers.length) title += ` (${modifiers.join(', ')})`;
+
+  // Description
+  let desc = `Learn how to use the tar command to ${action}`;
+  if (compression) desc += ` with ${compression} compression`;
+  if (modifiers.length) desc += ` using options like ${modifiers.join(', ')}`;
+  desc += `. Includes syntax, options, and practical examples.`;
+
+  return {
+    title,
+    description: desc
+  };
+}
+
 let callback = function () {
   let rad = document.getElementsByName('sfg')
   let prev = null
@@ -451,6 +482,25 @@ let callback = function () {
   const reg = /^\/tar[\w-]+\.html$/gi
   const res = window.location.pathname.toLowerCase()
   if (reg.test(res)) {
+    const meta = generateTitleAndDescription(res);
+
+    // 修改 <title>
+    if (meta.title) document.title = meta.title;
+
+    // 修改 <meta name="description">
+    if (meta.description) {
+      const descMeta = document.querySelector('meta[name="description"]');
+      if (descMeta) {
+        descMeta.setAttribute('content', meta.description);
+      } else {
+        // 如果没有 <meta name="description">，动态添加一个
+        const newMeta = document.createElement('meta');
+        newMeta.name = 'description';
+        newMeta.content = meta.description;
+        document.head.appendChild(newMeta);
+      }
+    }
+
     const opt = res.substring(5, res.length - 5).split('-')
     if (opt.length == 0) {
       opt = [,]
