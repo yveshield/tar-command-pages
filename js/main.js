@@ -418,7 +418,6 @@ function generateRandomTarLinks(count = 20) {
   const pick = arr => arr[Math.floor(Math.random() * arr.length)];
 
   const slugify = parts => '/tar-' + parts.filter(Boolean).join('-') + '.html';
-
   const formatTitle = (action, comp, mods) => {
     let t = `tar ${action}`;
     if (comp) t += ` with ${comp} compression`;
@@ -431,41 +430,23 @@ function generateRandomTarLinks(count = 20) {
 
   while (results.length < count) {
     const action = pick(actions);
-
-    // 是否允许压缩
     const allowCompression = ['create', 'list', 'extract'].includes(action);
     const comp = allowCompression && Math.random() < 0.8 ? pick(compressions) : null;
 
-    // 修饰符
     const mods = [];
+    if (action === 'create' && Math.random() < 0.5) mods.push(sparse);
+    if (Math.random() < 0.5) mods.push(pick(verboseFlags));
 
-    // sparse 仅适用于 create
-    if (action === 'create' && Math.random() < 0.5) {
-      mods.push(sparse);
-    }
-
-    // v / vv（通用）
-    if (Math.random() < 0.5) {
-      mods.push(pick(verboseFlags));
-    }
-
-    const parts = [action, comp, ...mods];
-    const path = slugify(parts);
-
+    const path = slugify([action, comp, ...mods]);
     if (seen.has(path)) continue;
     seen.add(path);
 
     const title = formatTitle(action, comp, mods);
-    results.push(`<li><a href="${path}">${title}</a></li>`);
+    results.push(`<a href="${path}">${title}</a>`);
   }
 
-  // 写入 div[id="links"]
   const container = document.getElementById('links');
-  if (container) {
-    container.innerHTML = `<ul>\n${results.join('\n')}\n</ul>`;
-  }
-
-  return results; // 也可返回用于其它用途
+  if (container) container.innerHTML = results.join('\n');
 }
 
 let callback = function () {
@@ -652,6 +633,7 @@ let callback = function () {
   document.getElementById('year').innerHTML = new Date().getFullYear()
 
   generateRandomTarLinks(20);
+  console.info(1);
 }
 
 if (
