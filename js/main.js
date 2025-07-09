@@ -222,9 +222,6 @@ let par_t = function () {
   cmd.u += ' collection.tar' + c
   cmd.g += ' collection.tar' + c
 
-  cmd.u += ' rock'
-  cmd.g += ' rock'
-
   set_cmd(cmd)
 }
 
