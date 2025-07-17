@@ -175,7 +175,7 @@ const d = function (a, b, c) {
   let y = Math.ceil(b / 16);
   let container = document.querySelector('.container');
   let table = document.createElement('table');
-  table.setAttribute('class', "text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400");
+  table.setAttribute('class', "w-full min-w-full table-auto text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400");
   let caption = document.createElement('caption');
   caption.setAttribute('class', 'text-sm');
   caption.innerText = title;
