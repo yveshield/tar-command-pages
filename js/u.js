@@ -184,8 +184,8 @@ const d = function (a, b, c) {
   table.appendChild(caption);
 
   let thead = document.getElementById('ut').getElementsByTagName('thead')[0];
-  let clone = thead.cloneNode(true);
-  table.appendChild(clone);
+  // let clone = thead.cloneNode(true);
+  table.appendChild(thead);
 
   let tbody = document.createElement('tbody');
   for (let i = x; i < y; i++) {
