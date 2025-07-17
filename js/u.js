@@ -236,57 +236,16 @@ const e = function (p) {
     container.appendChild(div);
   }
 }
-let p = window.location.search.substr(1).toUpperCase();
-const r = /q=(?<a>.+)-(?<b>.+)/i;
-const found = p.match(r);
-if (found != undefined) {
-  console.info(found.groups);
-  let a = parseInt(found.groups.a, 16);
-  console.info(a);
-  let b = parseInt(found.groups.b, 16);
-  console.info(b);
-  if (a < 0 || b > 65535 || a >= b) {
-    p = '';
+let p = window.location.search.slice(1).toUpperCase();
+const match = p.match(/Q=([0-9A-F]+)-([0-9A-F]+)/);
+
+let q = 'Q=0000-007F';
+if (match) {
+  const a = parseInt(match[1], 16);
+  const b = parseInt(match[2], 16);
+  if (a >= 0 && b <= 0xFFFF && a < b) {
+    q = p;
   }
-} else {
-  p = '';
 }
 
-if (p == '') {
-  p = 'Q=0000-007F';
-}
-e(p);
-// let tbody = document.getElementById("ut").getElementsByTagName('tbody')[0];
-// const f = function () {
-//     for (let i = tbody.children.length, ii = i; i < 4096 && i < ii + 32; i++) {
-//         let row = tbody.insertRow(-1);
-//         row.setAttribute("class", "bg-white border-b dark:bg-gray-800 dark:border-gray-700");
-//         let th = document.createElement("TH");
-//         th.setAttribute("scope", "row");
-//         th.setAttribute("class", "px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white");
-//         let k = (i * 16).toString(16).toUpperCase().padStart(4, '0');
-//         th.innerHTML = k;
-//         row.appendChild(th);
-//         for (let j = 0; j < 16; j++) {
-//             let cell = row.insertCell(j + 1);
-//             cell.setAttribute("class", "px-6 py-4 font-medium");
-//             let k = i * 16 + j;
-//             if (k <= 31) {
-//                 cell.innerHTML = s[k];
-//             } else if (k == 127) {
-//                 cell.innerHTML = 'DEL';
-//             } else {
-//                 cell.innerHTML = '&#' + k + ';';
-//             }
-//         }
-//     }
-// };
-// f();
-// window.onscroll = function () {
-//     let scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
-//     let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-//     let clientHeight = window.innerHeight || Math.min(document.documentElement.clientHeight, document.body.clientHeight);
-//     if (clientHeight + scrollTop >= scrollHeight - 50) {
-//         f();
-//     }
-// }
+e(q);
