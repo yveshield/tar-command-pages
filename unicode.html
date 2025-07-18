@@ -49,6 +49,20 @@
         td {
             text-align: center;
         }
+
+        #unicode-preview {
+            position: fixed;
+            display: none;
+            font-size: 48px;
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 9999;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 
@@ -121,6 +135,7 @@
     <div class="container w-5/6 mt-4 mx-auto px-4 pt-2 bg-slate-100 text-slate-400 font-extralight">
         <a href="https://tarcommand.com/">&copy;<span id="year"></span> TAR Command, tarcommand.com</a>
     </div>
+    <div id="unicode-preview"></div>
     <script src="js/u.js"></script>
 </body>
 

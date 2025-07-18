@@ -249,3 +249,24 @@ if (match) {
 }
 
 e(q);
+
+const preview = document.getElementById('unicode-preview');
+
+document.querySelectorAll('td').forEach(td => {
+  td.addEventListener('mouseenter', (e) => {
+    const char = e.target.textContent.trim();
+    if (char.length === 1) {
+      preview.textContent = char;
+      preview.style.display = 'block';
+    }
+  });
+
+  td.addEventListener('mousemove', (e) => {
+    preview.style.left = e.pageX + 12 + 'px';
+    preview.style.top = e.pageY + 12 + 'px';
+  });
+
+  td.addEventListener('mouseleave', () => {
+    preview.style.display = 'none';
+  });
+});
