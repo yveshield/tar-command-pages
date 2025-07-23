@@ -542,6 +542,21 @@ let callback = function () {
       }
     }
 
+    const canonicalUrl = 'https://tarcommand.com' + res;
+
+    // 查找现有的 canonical 标签
+    let link = document.querySelector('link[rel="canonical"]');
+
+    if (!link) {
+      // 如果没有，创建一个
+      link = document.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      document.head.appendChild(link);
+    }
+
+    // 设置 href
+    link.setAttribute('href', canonicalUrl);
+
     const opt = res.substring(5, res.length - 5).split('-')
     if (opt.length == 0) {
       opt = [,]
