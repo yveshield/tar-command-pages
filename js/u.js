@@ -237,7 +237,7 @@ const l = [
   ;
 ;
 
-const d = function (a, b, c) {
+const d = function (a, b, c, cp) {
   let title = a + '-' + b + ': ' + c;
   a = parseInt(a, 16);
   let x = Math.floor(a / 16);
@@ -278,20 +278,53 @@ const d = function (a, b, c) {
       } else {
         cell.innerHTML = '&#' + k + ';';
       }
+      if (cp == k) {
+        cell.setAttribute("class", "text-red-600");
+      }
     }
   }
   table.appendChild(tbody);
   container.appendChild(table);
 }
 
+const getCodePoint = function (q) {
+  // 1️⃣ 形如 "10191"
+  if (/^[0-9a-fA-F]+$/.test(q)) {
+    return parseInt(q, 16);
+  }
+
+  // 2️⃣ 单个字符（含非 BMP）
+  if (q.length > 0) {
+    return decodeURIComponent(q).codePointAt(0);
+  }
+
+  return null;
+}
+
 const e = function (p) {
+  const q = (p.startsWith('Q=') || p.startsWith('q=')) ? p.slice(2) : p;
+  const cp = getCodePoint(q);
+  let [s, t] = [-1, 0];
+  if (q.includes('-')) {
+    [s, t] = q.split('-').map(x => parseInt(x, 16));
+  }
   for (let i = 0, h = l.length; i < h; i++) {
-    let link = '/unicode.html?q=' + l[i][0];
-    if (p == 'Q=' + l[i][0]) {
+    const range = l[i][0];
+    const [start, end] = range.split('-').map(x => parseInt(x, 16));
+    let link = '/unicode.html?q=' + range;
+
+    if (cp !== null) {
+      if (cp >= start && cp <= end) {
+        [s, t] = [start, end];
+      }
+    }
+
+    if (start <= s && t <= end) {
       let scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
       let a = l[i][0].split('-')[0];
       let b = l[i][0].split('-')[1];
-      d(a, b, l[i][1]);
+      console.log(a, b, l[i][1]);
+      d(a, b, l[i][1], cp);
       window.scrollTo(0, scrollHeight - 10);
       continue;
     }
@@ -306,14 +339,29 @@ const e = function (p) {
     container.appendChild(div);
   }
 }
-let p = window.location.search.slice(1).toUpperCase();
-const match = p.match(/Q=([0-9A-F]+)-([0-9A-F]+)/);
+let p = window.location.search.slice(1);
+const mRange = p.match(/[Qq]=([0-9A-Fa-f]+)-([0-9A-Fa-f]+)/);
+const mHex = p.match(/[Qq]=([0-9A-Fa-f]+)/);
+const mChar = p.match(/[Qq]=(.+)/);
 
 let q = 'Q=0000-007F';
-if (match) {
-  const a = parseInt(match[1], 16);
-  const b = parseInt(match[2], 16);
+if (mRange) {
+  console.log('range');
+  const a = parseInt(mRange[1], 16);
+  const b = parseInt(mRange[2], 16);
   if (a >= 0 && b <= 0x10FFFF && a < b) {
+    q = p;
+  }
+} else if (mHex) {
+  const cp = parseInt(mHex[1], 16);
+  if (cp >= 0 && cp <= 0x10FFFF) {
+    q = p; // 交给后续区间定位逻辑
+  }
+} else if (mChar) {
+  console.log('char')
+  const ch = mChar[1];
+  const cp = ch.codePointAt(0);
+  if (cp !== undefined && cp <= 0x10FFFF) {
     q = p;
   }
 }
