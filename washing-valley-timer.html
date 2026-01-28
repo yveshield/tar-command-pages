@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>洗衣机波谷预约计算器</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f7fa;
+      padding: 96px 24px;
+    }
+
+    .card {
+      max-width: 760px;
+      margin: auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .row {
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    input {
+      padding: 6px 8px;
+      font-size: 14px;
+    }
+
+    .value {
+      font-size: 16px;
+    }
+
+    .hint {
+      color: #666;
+      font-size: 13px;
+    }
+
+    #delayHours {
+      font-weight: 600;
+      font-size: 20px;
+      font-family: 'DSEG7', monospace;
+      font-size: 64px;
+      letter-spacing: 4px;
+      color: #1aff00;
+      /* 经典荧光绿 */
+      background: #021402;
+      /* LCD 深色背景 */
+      padding: 12px 20px;
+      border-radius: 6px;
+      box-shadow:
+        inset 0 0 10px rgba(0, 0, 0, .8),
+        0 0 12px rgba(0, 255, 0, .3);
+      width: fit-content;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>🧺 电费波谷洗衣预约定时</h1>
+
+    <div class="row">
+      <label>波谷电价时段</label>
+      <input type="time" id="start" value="21:00" /> ～
+      <input type="time" id="end" value="08:00" />
+    </div>
+
+    <div class="row">
+      <label>当前时间</label>
+      <div class="value" id="now">--</div>
+    </div>
+
+    <div class="row">
+      <label>可设置预约小时数</label>
+      <div class="value" id="delayHours">--</div>
+    </div>
+
+    <div class="row">
+      <label>预计洗衣完成时间</label>
+      <div class="value" id="finish">--</div>
+    </div>
+  </div>
+
+  <script>
+    function pad(n) {
+      return n.toString().padStart(2, '0');
+    }
+
+    function formatDate(d, withSeconds = false) {
+      const y = d.getFullYear();
+      const m = pad(d.getMonth() + 1);
+      const day = pad(d.getDate());
+      const h = pad(d.getHours());
+      const min = pad(d.getMinutes());
+      const s = pad(d.getSeconds());
+      return withSeconds
+        ? `${y}-${m}-${day} ${h}:${min}:${s}`
+        : `${y}-${m}-${day} ${h}:${min}`;
+    }
+
+    function getValleyEnd(now) {
+      const endInput = document.getElementById('end').value;
+      const [eh, em] = endInput.split(':').map(Number);
+
+      const end = new Date(now);
+      end.setHours(eh, em, 0, 0);
+
+      // 如果结束时间早于当前时间，说明是“次日”
+      if (end <= now) {
+        end.setDate(end.getDate() + 1);
+      }
+      return end;
+    }
+
+    function tick() {
+      const now = new Date();
+      document.getElementById('now').textContent = formatDate(now, true);
+
+      const valleyEnd = getValleyEnd(now);
+      const diffMs = valleyEnd - now;
+
+      let hours = Math.floor(diffMs / (1000 * 60 * 60));
+      if (hours < 0) hours = 0;
+
+      document.getElementById('delayHours').textContent = hours + ' H';
+
+      const finish = new Date(now.getTime() + hours * 60 * 60 * 1000);
+      document.getElementById('finish').textContent = formatDate(finish);
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  </script>
+</body>
+
+</html>
