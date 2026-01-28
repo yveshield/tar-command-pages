@@ -246,10 +246,10 @@ const d = function (a, b, c) {
 
   let container = document.querySelector('.container');
   let table = document.createElement('table');
-  table.setAttribute('class', "w-full min-w-full table-auto text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400");
+  table.setAttribute('class', "w-full min-w-full table-auto text-sm text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400");
 
   let caption = document.createElement('caption');
-  caption.setAttribute('class', 'text-sm');
+  caption.setAttribute('class', 'text-sm uppercase');
   caption.innerText = title;
   table.appendChild(caption);
 
@@ -263,7 +263,7 @@ const d = function (a, b, c) {
     row.setAttribute("class", "bg-white border-b dark:bg-gray-800 dark:border-gray-700");
     let th = document.createElement("TH");
     th.setAttribute("scope", "row");
-    th.setAttribute("class", "px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white");
+    th.setAttribute("class", "px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white uppercase");
     let k = (i * 16).toString(16).toUpperCase().padStart(4, '0').replace(/0$/, '_');
     th.innerHTML = k;
     row.appendChild(th);
