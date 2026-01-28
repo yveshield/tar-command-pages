@@ -288,6 +288,9 @@ const d = function (a, b, c, cp) {
 }
 
 const getCodePoint = function (q) {
+  if (q.includes('-')) {
+    return null;
+  }
   // 1️⃣ 形如 "10191"
   if (/^[0-9a-fA-F]+$/.test(q)) {
     return parseInt(q, 16);
@@ -308,6 +311,7 @@ const e = function (p) {
   if (q.includes('-')) {
     [s, t] = q.split('-').map(x => parseInt(x, 16));
   }
+
   for (let i = 0, h = l.length; i < h; i++) {
     const range = l[i][0];
     const [start, end] = range.split('-').map(x => parseInt(x, 16));
@@ -323,7 +327,6 @@ const e = function (p) {
       let scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
       let a = l[i][0].split('-')[0];
       let b = l[i][0].split('-')[1];
-      console.log(a, b, l[i][1]);
       d(a, b, l[i][1], cp);
       window.scrollTo(0, scrollHeight - 10);
       continue;
@@ -339,14 +342,13 @@ const e = function (p) {
     container.appendChild(div);
   }
 }
-let p = window.location.search.slice(1);
+let p = decodeURIComponent(window.location.search.slice(1));
 const mRange = p.match(/[Qq]=([0-9A-Fa-f]+)-([0-9A-Fa-f]+)/);
 const mHex = p.match(/[Qq]=([0-9A-Fa-f]+)/);
 const mChar = p.match(/[Qq]=(.+)/);
 
 let q = 'Q=0000-007F';
 if (mRange) {
-  console.log('range');
   const a = parseInt(mRange[1], 16);
   const b = parseInt(mRange[2], 16);
   if (a >= 0 && b <= 0x10FFFF && a < b) {
@@ -358,7 +360,6 @@ if (mRange) {
     q = p; // 交给后续区间定位逻辑
   }
 } else if (mChar) {
-  console.log('char')
   const ch = mChar[1];
   const cp = ch.codePointAt(0);
   if (cp !== undefined && cp <= 0x10FFFF) {
