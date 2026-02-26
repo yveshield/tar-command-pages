@@ -349,6 +349,7 @@ const l = [
 ];
 
 let unicodeNames = {};
+let pinyins = {};
 
 async function loadUnicodeNames() {
   const res = await fetch("/js/unicode-names.json");
@@ -356,6 +357,12 @@ async function loadUnicodeNames() {
     throw new Error("Failed to load unicode-names.json");
   }
   unicodeNames = await res.json();
+
+  const ret = await fetch("/js/mandarin.json");
+  if (!ret.ok) {
+    throw new Error("Failed to load mandarin-pinyin.json");
+  }
+  pinyins = await ret.json();
 }
 
 const d = function (a, b, c, cp) {
@@ -396,9 +403,13 @@ const d = function (a, b, c, cp) {
         cell.innerHTML = s[k];
       } else if (k == 127) {
         cell.innerHTML = 'DEL';
+      } else if (unicodeNames[k]) {
+        cell.innerHTML = '&#' + k + ';';
+        cell.title = unicodeNames[k];
+      } else if (pinyins[k]) {
+        cell.innerHTML = '<ruby>&#' + k + ';<rt>' + pinyins[k] + '</rt></ruby>';
       } else {
         cell.innerHTML = '&#' + k + ';';
-        cell.title = unicodeNames[k] ?? "";
       }
       if (cp == k) {
         cell.setAttribute("class", "text-red-600");
