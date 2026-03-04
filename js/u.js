@@ -482,11 +482,16 @@ const e = function (p) {
     }
 
     if (start <= s && t <= end) {
-      let scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
       let a = l[i][0].split('-')[0];
       let b = l[i][0].split('-')[1];
       d(a, b, l[i][1], cp);
-      window.scrollTo(0, scrollHeight - 10);
+      const el = cp !== null ? document.querySelector('td.text-red-600') : document.querySelector('caption');
+      if (el) {
+        el.scrollIntoView({
+          behavior: 'smooth',  // 平滑滚动
+          block: 'center'      // 让它出现在视口中间
+        });
+      }
       continue;
     }
     let container = document.querySelector('.container');
