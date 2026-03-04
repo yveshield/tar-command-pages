@@ -351,17 +351,25 @@ let unicodeNames = {};
 let pinyins = {};
 
 async function loadUnicodeNames() {
-  const res = await fetch("/js/unicode-names.json");
-  if (!res.ok) {
+  const [res1, res2] = await Promise.all([
+    fetch("/js/unicode-names.json"),
+    fetch("/js/mandarin.json")
+  ]);
+
+  if (!res1.ok) {
     throw new Error("Failed to load unicode-names.json");
   }
-  unicodeNames = await res.json();
-
-  const ret = await fetch("/js/mandarin.json");
-  if (!ret.ok) {
-    throw new Error("Failed to load mandarin-pinyin.json");
+  if (!res2.ok) {
+    throw new Error("Failed to load mandarin.json");
   }
-  pinyins = await ret.json();
+
+  const [json1, json2] = await Promise.all([
+    res1.json(),
+    res2.json()
+  ]);
+
+  unicodeNames = json1;
+  pinyins = json2;
 }
 
 const d = function (a, b, c, cp) {
@@ -372,6 +380,9 @@ const d = function (a, b, c, cp) {
   let y = Math.ceil(b / 16);
 
   let container = document.querySelector('.container');
+
+  const fragment = document.createDocumentFragment();
+
   let table = document.createElement('table');
   table.setAttribute('class', "w-full min-w-full table-auto text-sm text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400");
 
@@ -383,40 +394,55 @@ const d = function (a, b, c, cp) {
   let thead = document.getElementById('ut').getElementsByTagName('thead')[0];
   // let clone = thead.cloneNode(true);
   table.appendChild(thead);
+  fragment.appendChild(table);
 
-  let tbody = document.createElement('tbody');
   for (let i = x; i < y; i++) {
-    let row = tbody.insertRow(-1);
-    row.setAttribute("class", "bg-white border-b dark:bg-gray-800 dark:border-gray-700");
-    let th = document.createElement("TH");
-    th.setAttribute("scope", "row");
-    th.setAttribute("class", "px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white uppercase");
+    let html = `
+      <table class="w-full min-w-full table-fixed text-sm text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tbody>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+    `;
     let k = (i * 16).toString(16).toUpperCase().padStart(4, '0').replace(/0$/, '_');
-    th.innerHTML = k;
-    row.appendChild(th);
+    html += `<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white uppercase">${k}</th>`;
+
     for (let j = 0; j < 16; j++) {
-      let cell = row.insertCell(j + 1);
-      cell.setAttribute("class", "px-6 py-4 font-medium");
+      let cellContent = '';
+      let extraClass = '';
+      let title = '';
+
       let k = i * 16 + j;
       if (k <= 31) {
-        cell.innerHTML = s[k];
+        cellContent = s[k];
       } else if (k == 127) {
-        cell.innerHTML = 'DEL';
+        cellContent = 'DEL';
       } else if (unicodeNames[k]) {
-        cell.innerHTML = '&#' + k + ';';
-        cell.title = unicodeNames[k];
+        cellContent = '&#' + k + ';';
+        title = unicodeNames[k];
       } else if (pinyins[k]) {
-        cell.innerHTML = '<ruby>&#' + k + ';<rt>' + pinyins[k] + '</rt></ruby>';
+        cellContent = '<ruby>&#' + k + ';<rt>' + pinyins[k] + '</rt></ruby>';
       } else {
-        cell.innerHTML = '&#' + k + ';';
+        cellContent = '&#' + k + ';';
       }
       if (cp == k) {
-        cell.setAttribute("class", "text-red-600");
+        extraClass = " text-red-600";
       }
+      const char = String.fromCodePoint(k);
+      const url = `/unicode.html?q=${encodeURIComponent(char)}`;
+      html += `
+        <td class="px-6 py-4 font-medium${extraClass}"` + (title ?? '') + `>
+          <a href="${url}">${cellContent}</a>
+        </td>
+      `;
     }
+    html += `</tr></tbody></table>`;
+
+    const wrapper = document.createElement('div');
+    wrapper.setAttribute('class', 'mx-auto');
+    wrapper.innerHTML = html;
+    fragment.appendChild(wrapper);
   }
-  table.appendChild(tbody);
-  container.appendChild(table);
+
+  container.appendChild(fragment);
 }
 
 const getCodePoint = function (q) {
