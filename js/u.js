@@ -429,7 +429,7 @@ const d = function (a, b, c, cp) {
       const char = String.fromCodePoint(k);
       const url = `/unicode.html?q=${encodeURIComponent(char)}`;
       html += `
-        <td class="px-6 py-4 font-medium${extraClass}"` + (title ?? '') + `>
+        <td class="px-6 py-4 font-medium${extraClass}"` + (title ? ` title="${title}"` : '') + `>
           <a href="${url}">${cellContent}</a>
         </td>
       `;
