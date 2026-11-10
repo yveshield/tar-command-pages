@@ -353,7 +353,7 @@ let pinyins = {};
 async function loadUnicodeNames() {
   const [res1, res2] = await Promise.all([
     fetch("/js/unicode-names.json"),
-    fetch("/js/mandarin.json")
+    fetch("/js/multi-mandarin.json")
   ]);
 
   if (!res1.ok) {
