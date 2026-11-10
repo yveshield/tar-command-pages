@@ -352,19 +352,19 @@ let pinyins = {};
 
 async function loadUnicodeNames() {
   const [res1, res2] = await Promise.all([
-    fetch("/js/unicode-names.json"),
+    Promise.resolve({}), // fetch("/js/unicode-names.json"),
     fetch("/js/multi-mandarin.json")
   ]);
 
-  if (!res1.ok) {
-    throw new Error("Failed to load unicode-names.json");
-  }
+  // if (!res1.ok) {
+  //   throw new Error("Failed to load unicode-names.json");
+  // }
   if (!res2.ok) {
     throw new Error("Failed to load mandarin.json");
   }
 
   const [json1, json2] = await Promise.all([
-    res1.json(),
+    Promise.resolve({}), // res1.json(),
     res2.json()
   ]);
 
