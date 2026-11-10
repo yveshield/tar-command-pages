@@ -352,24 +352,37 @@ let pinyins = {};
 
 async function loadUnicodeNames() {
   const [res1, res2] = await Promise.all([
-    Promise.resolve({}), // fetch("/js/unicode-names.json"),
-    fetch("/js/multi-mandarin.json")
+    fetch("/js/unicode-names.json"),
+    fetch("/js/mandarin.json")
   ]);
 
-  // if (!res1.ok) {
-  //   throw new Error("Failed to load unicode-names.json");
-  // }
+  if (!res1.ok) {
+    throw new Error("Failed to load unicode-names.json");
+  }
   if (!res2.ok) {
     throw new Error("Failed to load mandarin.json");
   }
 
   const [json1, json2] = await Promise.all([
-    Promise.resolve({}), // res1.json(),
+    res1.json(),
     res2.json()
   ]);
 
   unicodeNames = json1;
   pinyins = json2;
+
+  document.querySelectorAll('td[data-codepoint]').forEach(td => {
+    const k = td.dataset.codepoint;
+    const a = td.querySelector('a');
+
+    if (unicodeNames[k]) {
+      td.title = unicodeNames[k];
+    }
+
+    if (pinyins[k]) {
+      a.innerHTML = `<ruby>${a.textContent}<rt>${pinyins[k]}</rt></ruby>`;
+    }
+  });
 }
 
 const d = function (a, b, c, cp) {
@@ -408,18 +421,12 @@ const d = function (a, b, c, cp) {
     for (let j = 0; j < 16; j++) {
       let cellContent = '';
       let extraClass = '';
-      let title = '';
 
       let k = i * 16 + j;
       if (k <= 31) {
         cellContent = s[k];
       } else if (k == 127) {
         cellContent = 'DEL';
-      } else if (unicodeNames[k]) {
-        cellContent = '&#' + k + ';';
-        title = unicodeNames[k];
-      } else if (pinyins[k]) {
-        cellContent = '<ruby>&#' + k + ';<rt>' + pinyins[k] + '</rt></ruby>';
       } else {
         cellContent = '&#' + k + ';';
       }
@@ -429,7 +436,7 @@ const d = function (a, b, c, cp) {
       const char = String.fromCodePoint(k);
       const url = `/unicode.html?q=${encodeURIComponent(char)}`;
       html += `
-        <td class="px-6 py-4 font-medium${extraClass}"` + (title ? ` title="${title}"` : '') + `>
+        <td data-codepoint="${k}" class="px-6 py-4 font-medium${extraClass}">
           <a href="${url}">${cellContent}</a>
         </td>
       `;
@@ -530,9 +537,9 @@ if (mRange) {
   }
 }
 
-loadUnicodeNames().then(() => {
-  e(q);
-});
+e(q);
+
+loadUnicodeNames();
 
 // const preview = document.getElementById('unicode-preview');
 
