@@ -131,7 +131,10 @@ const l = [
   ['3300-33FF', '中日韩兼容字符', 'CJK Compatibility'],
   ['3400-4DBF', '中日韩统一表意文字扩展区A', 'CJK Unified Ideographs Extension-A'],
   ['4DC0-4DFF', '易经六十四卦符号', 'Yijing Hexagram Symbols'],
-  ['4E00-9FFF', '中日韩统一表意文字 (基本区)', 'CJK Unified Ideographs'],
+  ['4E00-62FF', '中日韩统一表意文字 (基本区)', 'CJK Unified Ideographs'],
+  ['6300-77FF', '中日韩统一表意文字 (基本区)', 'CJK Unified Ideographs'],
+  ['7800-8CFF', '中日韩统一表意文字 (基本区)', 'CJK Unified Ideographs'],
+  ['8D00-9FFF', '中日韩统一表意文字 (基本区)', 'CJK Unified Ideographs'],
   ['A000-A48F', '彝文音节', 'Yi Syllables'],
   ['A490-A4CF', '彝文部首', 'Yi Radicals'],
   ['A4D0-A4FF', '傈僳文', 'Lisu'],
@@ -341,7 +344,14 @@ const l = [
   ['1FA00-1FA6F', '棋类符号', 'Chess Symbols'],
   ['1FA70-1FAFF', '符号和象形文字扩展-A', 'Symbols and Pictographs Extended-A'],
   ['1FB00-1FBFF', '遗留计算符号', 'Symbols for Legacy Computing'],
-  ['20000-2A6DF', '中日韩统一表意文字扩展区B', 'CJK Unified Ideographs Extension B'],
+  ['20000-214FF', '中日韩统一表意文字扩展区B', 'CJK Unified Ideographs Extension B'],
+  ['21500-229FF', '中日韩统一表意文字扩展区B', 'CJK Unified Ideographs Extension B'],
+  ['22A00-23EFF', '中日韩统一表意文字扩展区B', 'CJK Unified Ideographs Extension B'],
+  ['23F00-253FF', '中日韩统一表意文字扩展区B', 'CJK Unified Ideographs Extension B'],
+  ['25400-268FF', '中日韩统一表意文字扩展区B', 'CJK Unified Ideographs Extension B'],
+  ['26900-27DFF', '中日韩统一表意文字扩展区B', 'CJK Unified Ideographs Extension B'],
+  ['27E00-292FF', '中日韩统一表意文字扩展区B', 'CJK Unified Ideographs Extension B'],
+  ['29300-2A6DF', '中日韩统一表意文字扩展区B', 'CJK Unified Ideographs Extension B'],
   ['2A700-2B73F', '中日韩统一表意文字扩展区C', 'CJK Unified Ideographs Extension C'],
   ['2B740-2B81F', '中日韩统一表意文字扩展区D', 'CJK Unified Ideographs Extension D'],
   ['2B820-2CEAF', '中日韩统一表意文字扩展区E', 'CJK Unified Ideographs Extension E'],
@@ -392,8 +402,17 @@ async function loadUnicodeNames() {
     if (pinyins[k]) {
       a.innerHTML = `<ruby>${a.textContent}<rt>${pinyins[k]}</rt></ruby>`;
     }
+
+    if (k <= 31 || (k >= 127 && k <= 159)) {
+      a.style.fontSize = '.8rem';
+      a.style.border = '1px dashed currentColor';
+      a.style.display = 'inline-block';
+    }
   });
 }
+
+const isUnassigned = cp =>
+  /^\p{Cn}$/u.test(String.fromCodePoint(cp));
 
 const d = function (a, b, c, cp) {
   let title = a + '-' + b + ': ' + c;
@@ -439,14 +458,15 @@ const d = function (a, b, c, cp) {
         cellContent = 'DEL';
       } else if (128 <= k && k <= 159) {
         cellContent = c1Controls[k - 128];
+      } if (isUnassigned(k)) {
+        cellContent = '';
       } else {
         cellContent = String.fromCodePoint(k);
       }
       if (cp == k) {
         extraClass = " text-red-600";
       }
-      const char = String.fromCodePoint(k);
-      const url = `/unicode.html?q=${encodeURIComponent(char)}`;
+      const url = `/unicode.html?q=${k.toString(16).toUpperCase()}`;
       html += `
         <td data-codepoint="${k}" class="px-6 py-4 font-medium${extraClass}">
           <a href="${url}">${cellContent}</a>
