@@ -1,5 +1,15 @@
 const s = ['NUL', 'SOH', 'STX', 'ETX', 'EOT', 'ENQ', 'ACK', 'BEL', 'BS', 'HT', 'LF', 'VT', 'FF', 'CR', 'SO', 'SI', 'DLE', 'DC1', 'DC2', 'DC3', 'DC4', 'NAK', 'SYN', 'ETB', 'CAN', 'EM', 'SUB', 'ESC', 'FS', 'GS', 'RS', 'US'];
 // https://zh.wikipedia.org/wiki/Unicode%E5%8D%80%E6%AE%B5
+const c1Controls = [
+  'PAD', 'HOP', 'BPH', 'NBH',
+  'IND', 'NEL', 'SSA', 'ESA',
+  'HTS', 'HTJ', 'VTS', 'PLD',
+  'PLU', 'RI', 'SS2', 'SS3',
+  'DCS', 'PU1', 'PU2', 'STS',
+  'CCH', 'MW', 'SPA', 'EPA',
+  'SOS', 'SGCI', 'SCI', 'CSI',
+  'ST', 'OSC', 'PM', 'APC'
+];
 const l = [
   ['0000-007F', '基本拉丁字母', 'Basic Latin[g]'],
   ['0080-00FF', '拉丁字母补充-1', 'Latin-1 Supplement[h]'],
@@ -427,8 +437,10 @@ const d = function (a, b, c, cp) {
         cellContent = s[k];
       } else if (k == 127) {
         cellContent = 'DEL';
+      } else if (128 <= k && k <= 159) {
+        cellContent = c1Controls[k - 128];
       } else {
-        cellContent = '&#' + k + ';';
+        cellContent = String.fromCodePoint(k);
       }
       if (cp == k) {
         extraClass = " text-red-600";
