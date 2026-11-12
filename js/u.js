@@ -370,7 +370,9 @@ const l = [
 let unicodeNames = {};
 let pinyins = {};
 
-async function loadUnicodeNames() {
+async function f(p) {
+  const q = (p.startsWith('Q=') || p.startsWith('q=')) ? p.slice(2) : p;
+  const cp = getCodePoint(q);
   const [res1, res2] = await Promise.all([
     fetch("/js/unicode-names.json"),
     fetch("/js/mandarin.json")
@@ -407,6 +409,25 @@ async function loadUnicodeNames() {
       a.style.fontSize = '.8rem';
       a.style.border = '1px dashed currentColor';
       a.style.display = 'inline-block';
+      if (k <= 31) {
+        a.textContent = s[k];
+      } else if (k == 127) {
+        a.textContent = 'DEL';
+      } else {
+        a.textContent = c1Controls[k - 128];
+      }
+    }
+
+    if (cp == k) {
+      td.classList.add('text-red-600');
+      td.scrollIntoView({
+        behavior: 'smooth',  // 平滑滚动
+        block: 'center'      // 让它出现在视口中间
+      });
+    }
+
+    if (isUnassigned(k)) {
+      td.textContent = '';
     }
   });
 }
@@ -414,7 +435,7 @@ async function loadUnicodeNames() {
 const isUnassigned = cp =>
   /^\p{Cn}$/u.test(String.fromCodePoint(cp));
 
-const d = function (a, b, c, cp) {
+const d = function (a, b, c) {
   let title = a + '-' + b + ': ' + c;
   a = parseInt(a, 16);
   let x = Math.floor(a / 16);
@@ -448,27 +469,11 @@ const d = function (a, b, c, cp) {
     html += `<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white uppercase">${k}</th>`;
 
     for (let j = 0; j < 16; j++) {
-      let cellContent = '';
-      let extraClass = '';
-
       let k = i * 16 + j;
-      if (k <= 31) {
-        cellContent = s[k];
-      } else if (k == 127) {
-        cellContent = 'DEL';
-      } else if (128 <= k && k <= 159) {
-        cellContent = c1Controls[k - 128];
-      } else if (isUnassigned(k)) {
-        cellContent = '';
-      } else {
-        cellContent = String.fromCodePoint(k);
-      }
-      if (cp == k) {
-        extraClass = " text-red-600";
-      }
-      const url = `/unicode.html?q=${k.toString(16).toUpperCase()}`;
+      let url = `/unicode.html?q=${k.toString(16).toUpperCase()}`;
+      let cellContent = String.fromCodePoint(k);
       html += `
-        <td data-codepoint="${k}" class="px-6 py-4 font-medium${extraClass}">
+        <td data-codepoint="${k}" class="px-6 py-4 font-medium">
           <a href="${url}">${cellContent}</a>
         </td>
       `;
@@ -523,14 +528,7 @@ const e = function (p) {
     if (start <= s && t <= end) {
       let a = l[i][0].split('-')[0];
       let b = l[i][0].split('-')[1];
-      d(a, b, l[i][1], cp);
-      const el = cp !== null ? document.querySelector('td.text-red-600') : document.querySelector('caption');
-      if (el) {
-        el.scrollIntoView({
-          behavior: 'smooth',  // 平滑滚动
-          block: 'center'      // 让它出现在视口中间
-        });
-      }
+      d(a, b, l[i][1]);
       continue;
     }
     let container = document.querySelector('.container');
@@ -571,7 +569,7 @@ if (mRange) {
 
 e(q);
 
-loadUnicodeNames();
+f(q);
 
 // const preview = document.getElementById('unicode-preview');
 
