@@ -458,7 +458,7 @@ const d = function (a, b, c, cp) {
         cellContent = 'DEL';
       } else if (128 <= k && k <= 159) {
         cellContent = c1Controls[k - 128];
-      } if (isUnassigned(k)) {
+      } else if (isUnassigned(k)) {
         cellContent = '';
       } else {
         cellContent = String.fromCodePoint(k);
