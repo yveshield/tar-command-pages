@@ -44,7 +44,7 @@ const l = [
   ['0D00-0D7F', '马拉雅拉姆文', 'Malayalam'],
   ['0D80-0DFF', '僧伽罗文', 'Sinhala'],
   ['0E00-0E7F', '泰文', 'Thai'],
-  ['0E80-0EFF', '寮文', 'Lao'],
+  ['0E80-0EFF', '老挝文', 'Lao'],
   ['0F00-0FFF', '藏文', 'Tibetan'],
   ['1000-109F', '缅甸文', 'Myanmar'],
   ['10A0-10FF', '格鲁吉亚字母', 'Georgian'],
@@ -370,66 +370,21 @@ const l = [
 let unicodeNames = {};
 let pinyins = {};
 
-async function f(p) {
-  const q = (p.startsWith('Q=') || p.startsWith('q=')) ? p.slice(2) : p;
-  const cp = getCodePoint(q);
-  const [res1, res2] = await Promise.all([
-    fetch("/js/unicode-names.json"),
-    fetch("/js/mandarin.json")
-  ]);
-
-  if (!res1.ok) {
-    throw new Error("Failed to load unicode-names.json");
+const getCodePoint = function (q) {
+  if (q.includes('-')) {
+    return null;
   }
-  if (!res2.ok) {
-    throw new Error("Failed to load mandarin.json");
+  // 1️⃣ 形如 "10191"
+  if (/^[0-9a-fA-F]+$/.test(q)) {
+    return parseInt(q, 16);
   }
 
-  const [json1, json2] = await Promise.all([
-    res1.json(),
-    res2.json()
-  ]);
+  // 2️⃣ 单个字符（含非 BMP）
+  if (q.length > 0) {
+    return decodeURIComponent(q).codePointAt(0);
+  }
 
-  unicodeNames = json1;
-  pinyins = json2;
-
-  document.querySelectorAll('td[data-codepoint]').forEach(td => {
-    const k = td.dataset.codepoint;
-    const a = td.querySelector('a');
-
-    if (unicodeNames[k]) {
-      td.title = unicodeNames[k];
-    }
-
-    if (pinyins[k]) {
-      a.innerHTML = `<ruby>${a.textContent}<rt>${pinyins[k]}</rt></ruby>`;
-    }
-
-    if (k <= 31 || (k >= 127 && k <= 159)) {
-      a.style.fontSize = '.8rem';
-      a.style.border = '1px dashed currentColor';
-      a.style.display = 'inline-block';
-      if (k <= 31) {
-        a.textContent = s[k];
-      } else if (k == 127) {
-        a.textContent = 'DEL';
-      } else {
-        a.textContent = c1Controls[k - 128];
-      }
-    }
-
-    if (cp == k) {
-      td.classList.add('text-red-600');
-      td.scrollIntoView({
-        behavior: 'smooth',  // 平滑滚动
-        block: 'center'      // 让它出现在视口中间
-      });
-    }
-
-    if (isUnassigned(k)) {
-      td.textContent = '';
-    }
-  });
+  return null;
 }
 
 const isUnassigned = cp =>
@@ -480,30 +435,13 @@ const d = function (a, b, c) {
     }
     html += `</tr></tbody></table>`;
 
-    const wrapper = document.createElement('div');
+    let wrapper = document.createElement('div');
     wrapper.setAttribute('class', 'mx-auto');
     wrapper.innerHTML = html;
     fragment.appendChild(wrapper);
   }
 
   container.appendChild(fragment);
-}
-
-const getCodePoint = function (q) {
-  if (q.includes('-')) {
-    return null;
-  }
-  // 1️⃣ 形如 "10191"
-  if (/^[0-9a-fA-F]+$/.test(q)) {
-    return parseInt(q, 16);
-  }
-
-  // 2️⃣ 单个字符（含非 BMP）
-  if (q.length > 0) {
-    return decodeURIComponent(q).codePointAt(0);
-  }
-
-  return null;
 }
 
 const e = function (p) {
@@ -542,6 +480,74 @@ const e = function (p) {
     container.appendChild(div);
   }
 }
+
+async function f(p) {
+  const q = (p.startsWith('Q=') || p.startsWith('q=')) ? p.slice(2) : p;
+  const cp = getCodePoint(q);
+  const [res1, res2] = await Promise.all([
+    fetch("/js/unicode-names.json"),
+    fetch("/js/mandarin.json")
+  ]);
+
+  if (!res1.ok) {
+    throw new Error("Failed to load unicode-names.json");
+  }
+  if (!res2.ok) {
+    throw new Error("Failed to load mandarin.json");
+  }
+
+  const [json1, json2] = await Promise.all([
+    res1.json(),
+    res2.json()
+  ]);
+
+  unicodeNames = json1;
+  pinyins = json2;
+
+  document.querySelectorAll('td[data-codepoint]').forEach(td => {
+    const k = td.dataset.codepoint;
+    const a = td.querySelector('a');
+
+    if (unicodeNames[k]) {
+      td.title = unicodeNames[k];
+    }
+
+    if (pinyins[k]) {
+      a.innerHTML = `<ruby>${a.textContent}<rt>${pinyins[k]}</rt></ruby>`;
+    }
+
+    if (k <= 31 || (k >= 127 && k <= 159)) {
+      a.style.fontSize = '.8rem';
+      a.style.border = '1px dashed currentColor';
+      a.style.display = 'inline-block';
+      if (k <= 31) {
+        a.textContent = s[k];
+      } else if (k == 127) {
+        a.textContent = 'DEL';
+      } else {
+        a.textContent = c1Controls[k - 128];
+      }
+    }
+
+    if (cp == k) {
+      td.classList.add('text-red-600');
+    }
+
+    if (isUnassigned(k)) {
+      td.textContent = '';
+    }
+  });
+
+  const target = cp !== null
+    ? document.querySelector('td.text-red-600')
+    : document.querySelector('caption');
+
+  target?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
+  });
+}
+
 let p = decodeURIComponent(window.location.search.slice(1));
 const mRange = p.match(/[Qq]=([0-9A-Fa-f]+)-([0-9A-Fa-f]+)/);
 const mHex = p.match(/[Qq]=([0-9A-Fa-f]+)/);
