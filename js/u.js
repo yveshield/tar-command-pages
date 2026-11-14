@@ -402,17 +402,33 @@ const d = function (a, b, c) {
   const fragment = document.createDocumentFragment();
 
   let table = document.createElement('table');
-  table.setAttribute('class', "w-full min-w-full table-auto text-sm text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400");
+  table.setAttribute('class', "w-full min-w-full table-fixed text-sm text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400");
 
   let caption = document.createElement('caption');
   caption.setAttribute('class', 'text-sm uppercase');
   caption.innerText = title;
   table.appendChild(caption);
 
-  let thead = document.getElementById('ut').getElementsByTagName('thead')[0];
-  // let clone = thead.cloneNode(true);
+  const thead = document.createElement('thead');
+  thead.className = 'text-sm text-gray-700 bg-gray-100 dark:bg-gray-700 dark:text-gray-400';
+
+  const tr = document.createElement('tr');
+
+  for (let i = -1; i < 16; i++) {
+    const th = document.createElement('th');
+    th.scope = 'col';
+    th.className = 'px-6 py-4';
+    th.textContent = i === -1 ? 'U+' : i.toString(16).toUpperCase();
+
+    tr.appendChild(th);
+  }
+
+  thead.appendChild(tr);
   table.appendChild(thead);
-  fragment.appendChild(table);
+  let wrapper = document.createElement('div');
+  wrapper.className = 'mx-auto';
+  wrapper.appendChild(table);
+  fragment.appendChild(wrapper);
 
   for (let i = x; i < y; i++) {
     let html = `
@@ -576,24 +592,3 @@ if (mRange) {
 e(q);
 
 f(q);
-
-// const preview = document.getElementById('unicode-preview');
-
-// document.querySelectorAll('td').forEach(td => {
-//   td.addEventListener('mouseenter', (e) => {
-//     const char = e.target.textContent.trim();
-//     if (char.length === 1) {
-//       preview.textContent = char;
-//       preview.style.display = 'block';
-//     }
-//   });
-
-//   td.addEventListener('mousemove', (e) => {
-//     preview.style.left = e.pageX + 12 + 'px';
-//     preview.style.top = e.pageY + 12 + 'px';
-//   });
-
-//   td.addEventListener('mouseleave', () => {
-//     preview.style.display = 'none';
-//   });
-// });
